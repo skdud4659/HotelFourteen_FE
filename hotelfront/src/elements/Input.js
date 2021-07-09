@@ -4,21 +4,9 @@ import styled from "styled-components";
 import { Text } from "../elements";
 
 const Input = (props) => {
-  const {
-    width,
-    padding,
-    height,
-    border,
-    size,
-    margin,
-    label,
-    value,
-    placeholder,
-    _onChange,
-    type,
-    need_value,
-    multiline,
-  } = props;
+
+  const {width, padding, name, height, border, size, margin, label, value, placeholder, _onChange, type, need_value, multiline} = props
+
 
   const styles = {
     padding: padding,
@@ -61,32 +49,29 @@ const Input = (props) => {
   return (
     <React.Fragment>
       <Text>{label}</Text>
-      <InputBox
-        {...styles}
-        placeholder={placeholder}
-        type={type}
-        onChange={_onChange}
-      />
-    </React.Fragment>
-  );
-};
+      <InputBox {...styles} placeholder={placeholder} type={type} name={name} onChange={_onChange} required/>
+      </React.Fragment>
+  )
+}
+
 
 Input.defaultProps = {
   width: "100%",
   padding: false,
-  height: "100%",
-  border: false,
-  size: "14px",
-  margin: false,
+  height : "100%",
+  border : false,
+  size : "14px",
+  margin : false,
+  label : "",
+  value : "",
+  placeholder : "",
+  _onChange : () => {},
+  type : "text",
+  need_value : false,
+  multiline :false,
+  name : false,
+}
 
-  label: "",
-  value: "",
-  placeholder: "",
-  _onChange: () => {},
-  type: "text",
-  need_value: false,
-  multiline: false,
-};
 
 const InputBox = styled.input`
   width: ${(props) => props.width};

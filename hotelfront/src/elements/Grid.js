@@ -2,16 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Grid = (props) => {
-  const {
-    children,
-    width,
-    is_flex,
-    bg,
-    padding,
-    margin,
-    height,
-    border_radius,
-  } = props;
+
+  const { children, align, width, is_flex, bg, padding, margin, height } = props;
+
   const styles = {
     width,
     is_flex,
@@ -20,6 +13,8 @@ const Grid = (props) => {
     height,
     bg,
     border_radius,
+    align
+
   };
   return <Wrapper {...styles}>{children}</Wrapper>;
 };
@@ -33,6 +28,8 @@ Grid.defaultProps = {
   margin: "auto",
   bg: null,
   border_radius: "",
+  align: false,
+
 };
 
 const Wrapper = styled.div`
@@ -49,6 +46,8 @@ const Wrapper = styled.div`
   margin: ${(props) => props.margin};
   background-color: ${(props) => props.bg};
   border-radius: ${(props) => props.border_radius};
+  ${(props) => props.align ? `text-align: ${(props.align)}` : ''};
+
 `;
 
 export default Grid;
