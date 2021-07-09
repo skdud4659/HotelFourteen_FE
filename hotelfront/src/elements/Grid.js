@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const Grid = (props) => {
-  const { children, width, is_flex, padding, margin, height } = props;
+  const { children, width, is_flex, bg, padding, margin, height } = props;
   const styles = {
     width,
     is_flex,
     padding,
     margin,
     height,
+    bg,
   };
   return <Wrapper {...styles}>{children}</Wrapper>;
 };
@@ -20,6 +21,7 @@ Grid.defaultProps = {
   is_flex: false,
   padding: "auto",
   margin: "auto",
+  bg: null,
 };
 
 const Wrapper = styled.div`
@@ -34,6 +36,7 @@ const Wrapper = styled.div`
   `}
   padding : ${(props) => props.padding};
   margin: ${(props) => props.margin};
+  background-color: ${(props) => props.bg};
 `;
 
 export default Grid;

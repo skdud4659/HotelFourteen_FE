@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import bg_IMG from '../img/bg.jpg'
 
 const Image = (props) => {
 
-  const {width, height, margin, src} = props
+  const {width, height, margin, src,} = props
 
   const styles = {
     width:width,
@@ -23,10 +22,10 @@ Image.defaultProps = {
   width : "100%",
   height : "100%",
   margin : false,
-  src: bg_IMG,
+  src: '',
 }
 
-const DefaultImage = styled.image`
+const DefaultImage = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   margin: ${(props) => props.margin};

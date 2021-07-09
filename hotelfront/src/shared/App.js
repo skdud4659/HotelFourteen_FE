@@ -11,33 +11,30 @@ import { Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configStore";
 
-//이미지
-import bg_IMG from '../img/bg.jpg'
-
-//엘리먼트
-import {Image} from '../elements'
 import styled from "styled-components";
 
 function App() {
   return (
-    <div className="App">
-      <BackGround />
-      <ConnectedRouter history={history}>
-        <Route path="/" exact component={Main} />
-        <Route path="/login" exact component={LogIn} />
-        <Route path="/register" exact component={SignUp} />
-        <Route path="/post_review" exact component={WriteEdit} />
-        <Route path="/post_review/:id" exact component={WriteEdit} />
-        <Route path="/booking" exact component={Book} />
-      </ConnectedRouter>
-    </div>
+      <BackGround>
+        <ConnectedRouter history={history}>
+          <Route path="/" exact component={Main} />
+          <Route path="/login" exact component={LogIn} />
+          <Route path="/register" exact component={SignUp} />
+          <Route path="/post_review" exact component={WriteEdit} />
+          <Route path="/post_review/:id" exact component={WriteEdit} />
+          <Route path="/booking" exact component={Book} />
+        </ConnectedRouter>
+      </BackGround>
   );
 }
 
-const BackGround = styled.image`
-  background-image: url('../img/bg.jpg');
-  width: 100px;
-  height: 100px;
+const BackGround = styled.div`
+  background-image: url('https://cdn.pixabay.com/photo/2013/12/09/03/53/northern-lights-225454_1280.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
 `;
 
 export default App;
