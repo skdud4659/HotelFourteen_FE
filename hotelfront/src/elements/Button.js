@@ -28,6 +28,7 @@ const ButtonEle = styled.button`
   background-color: ${(props) => props.bg_color};
   color: ${(props) => props.hover_color};
   border-radius: ${(props) => props.border_radius};
+  transition: background-color 0.3s;
   :hover {
     cursor: pointer;
     background-color: ${(props) => props.hover_color};
