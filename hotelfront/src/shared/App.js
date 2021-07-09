@@ -20,7 +20,7 @@ function App() {
         <Route path="/register" exact component={SignUp}/>
         <Route path="/post_review" exact component={WriteEdit}/>
         <Route path="/post_review/:id" exact component={WriteEdit}/>
-        <Route path="/booking" exact component={Book}/>
+        <Route path="/book" exact component={Book}/>
       </ConnectedRouter>
 
     </div>
