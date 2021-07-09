@@ -20,7 +20,7 @@ const Text = (props) => {
   );
 }
 
-Input.defaultProps = {
+Text.defaultProps = {
   margin : false,
   color : 'black',
   size : "14px",
