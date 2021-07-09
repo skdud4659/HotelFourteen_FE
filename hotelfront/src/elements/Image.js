@@ -1,28 +1,27 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Image = (props) => {
-
-  const {width, height, margin} = props
+  const { width, height, margin } = props;
 
   const styles = {
-    width:width,
-    height:height,
-    margin:margin,
-  }
+    width: width,
+    height: height,
+    margin: margin,
+  };
 
   return (
     <React.Fragment>
-      <DefaultImage {...styles}/>
+      <DefaultImage {...styles} />
     </React.Fragment>
   );
-}
+};
 
-Input.defaultProps = {
-  width : "100%",
-  height : "100%",
-  margin : false,
-}
+Image.defaultProps = {
+  width: "100%",
+  height: "100%",
+  margin: false,
+};
 
 const DefaultImage = styled.input`
   width: ${(props) => props.width};
