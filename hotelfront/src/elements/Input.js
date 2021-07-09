@@ -80,3 +80,5 @@ const TextArea = styled.textarea`
   margin: ${(props) => props.margin};
   //css 만들면 focus 조절
 `; 
+
+export default Input
