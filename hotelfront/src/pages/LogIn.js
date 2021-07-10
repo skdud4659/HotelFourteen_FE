@@ -54,14 +54,7 @@ const LogIn = (props) => {
                   padding="0px 1%;"
                   placeholder="아이디를 입력해주세요."
                   // _onChange={input_Id}
-                  name="id"
-                <Text bold color="white">닉네임</Text>
-                <Input
-                  padding="0px 1%;"
-                  placeholder="닉네임을 입력해주세요."
-                  // _onChange={input_UserName}
-                  name="username"
-                  />
+                  name="id"/>
               </Grid>
               {/* 비밀번호 input */}
               <Grid width="400px" height="50px" padding="5% 0px">
