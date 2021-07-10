@@ -35,8 +35,8 @@ const Input = (props) => {
   if (multiline) {
     return (
       <React.Fragment>
-        <Text>{label}</Text>
         <TextArea
+          rows={16}
           {...styles}
           placeholder={placeholder}
           type={type}

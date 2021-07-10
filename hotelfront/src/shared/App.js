@@ -26,7 +26,7 @@ function App() {
         <Route path="/register" exact component={SignUp} />
         <Route path="/review" exact component={WriteEdit} />
         <Route path="/review/:id" exact component={WriteEdit} />
-        <Route path="/booking" exact component={Book} />
+        <Route path="/book" exact component={Book} />
       </ConnectedRouter>
     </>
   );
