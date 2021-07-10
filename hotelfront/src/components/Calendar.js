@@ -19,12 +19,14 @@ const Calendar = () => {
 
   const calendarToggle = () => {
     if (toggleSearch) {
+      window.alert("조회하기 버튼을 다시 눌러주세요.");
       return;
     }
     settoggleCalender((prev) => !prev);
   };
   const personToggle = () => {
     if (toggleSearch) {
+      window.alert("조회하기 버튼을 다시 눌러주세요.");
       return;
     }
     settoggleCheckPerson((prev) => !prev);
@@ -42,8 +44,20 @@ const Calendar = () => {
   };
 
   const searchToogle = () => {
-    settoggleCalender((prev) => !prev);
-    settoggleCheckPerson((prev) => !prev);
+    if (!startDate || !endDate || !total || !roomType) {
+      window.alert("선택사항을 모두 선택해 주세요");
+      return;
+    }
+    if (startDate.getDate() < new Date().getDate()) {
+      window.alert("오늘 날짜 이상을 설정해 주세요");
+      return;
+    }
+    if (toggleCalender) {
+      settoggleCalender((prev) => !prev);
+    }
+    if (toggleCheckPerson) {
+      settoggleCheckPerson((prev) => !prev);
+    }
     setSearch((prev) => !prev);
   };
 
@@ -91,7 +105,7 @@ const Calendar = () => {
           </Text>
           <Grid
             is_flex={true}
-            bg="#333333"
+            bg={theme.innerBoxColor}
             height="50px"
             width="130px"
             border_radius={theme.borderRadius}
@@ -104,7 +118,7 @@ const Calendar = () => {
           </Grid>
           <Grid
             is_flex={true}
-            bg="#333333"
+            bg={theme.innerBoxColor}
             height="50px"
             width="130px"
             border_radius={theme.borderRadius}
@@ -272,7 +286,16 @@ const Calendar = () => {
           />
         </Grid>
       )}
-      {toggleSearch && <SearchRoom />}
+      {toggleSearch && (
+        <Grid width="800px" margin="0 auto 10px auto">
+          <SearchRoom
+            startDate={startDate}
+            endDate={endDate}
+            total={total}
+            roomType={roomType}
+          />
+        </Grid>
+      )}
     </>
   );
 };

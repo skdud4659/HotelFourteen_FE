@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Button, Grid, Input, Text } from '../elements';
 
 const LogIn = (props) => {
   //input 입력값 확인을 위한 함수
@@ -15,6 +17,23 @@ const LogIn = (props) => {
   // //로그인 버튼
   // const loginBtn = () => {
   //   console.log(id, pw)
+
+
+  //input 입력값 확인을 위한 함수
+  // const [user_name, setUserName] = React.useState("");
+  // const [pw, setPw] = React.useState("");
+
+  // const input_UserName = (e) => {
+  //   setUserName(e.target.value)
+  // }
+  // const input_Pw = (e) => {
+  //   setPw(e.target.value)
+  // }
+
+  // //로그인 버튼
+  // const loginBtn = () => {
+  //   console.log(user_name, pw)
+
   // }
 
   return (
@@ -36,6 +55,12 @@ const LogIn = (props) => {
                   placeholder="아이디를 입력해주세요."
                   // _onChange={input_Id}
                   name="id"
+                <Text bold color="white">닉네임</Text>
+                <Input
+                  padding="0px 1%;"
+                  placeholder="닉네임을 입력해주세요."
+                  // _onChange={input_UserName}
+                  name="username"
                   />
               </Grid>
               {/* 비밀번호 input */}
@@ -60,5 +85,31 @@ const LogIn = (props) => {
       </Grid>
   );
 }
+
+const Box = styled.div`
+  width:100%;
+  height:10%;
+  padding:auto;
+  text-align: center;
+  padding-top: 5%;
+`;
+
+const FromBox = styled.form`
+  width: 70%;
+  height: 90%;
+  margin:5% auto;
+`;
+
+const InputBtn = styled.input`
+  width:100%;
+  height: 40px;
+  border-radius: 30px;
+  font-weight: 700;
+  border: none;
+  color:white;
+  background-color: #376a48;
+  margin:auto;
+  align-content: center;
+`;
 
 export default LogIn;
