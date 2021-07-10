@@ -7,7 +7,7 @@ import theme from "../shared/theme";
 
 const SearchRoom = (props) => {
   // 여기서 axios 서버 요청
-  const { startDate, endDate, total, roomType } = props;
+  const { startDate, endDate, adult, child, roomType } = props;
   const start_date = format(startDate, "yyyy-MM-dd", { locale: enGB });
   const end_date = format(endDate, "yyyy-MM-dd", { locale: enGB });
   const history = useHistory();
