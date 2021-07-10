@@ -2,19 +2,29 @@ import React from 'react';
 import {Grid, Image, Input, Button} from '../elements';
 import styled from 'styled-components';
 
+import { useDispatch } from 'react-redux'
+import { addReview, addReviewDB } from '../redux/modules/review'
+
 import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Write = (props) => {
+  const dispatch = useDispatch();
 
-  const [review, setReview] = React.useState('');
+  const [content, setContent] = React.useState('');
+  const [title, setTitle] = React.useState('');
 
-  const input_review = (e) => {
-    setReview(e.target.value)
+  const input_content = (e) => {
+    setContent(e.target.value)
+  }
+
+  const input_title = (e) => {
+    setTitle(e.target.value)
   }
 
   const WriteBtn = () => {
-    console.log(review)
+    window.alert('리뷰 작성이 완료되었어요!')
+    dispatch(addReviewDB(title, content))
   }
 
   return (
@@ -37,7 +47,12 @@ const Write = (props) => {
                 </Grid>
             </Grid>
             {/* flex 우측 - textarea */}
-            <Input multiline width="70%" margin="6% 5% 0px 0px;" padding="3%;" _onChange={input_review} />
+            <Grid>
+              <Grid width="70%">
+                <Input width="70%" padding="2%" placeholder="제목을 입력해주세요." _onChange={input_title}></Input>
+              </Grid>
+              <Input multiline width="70%" margin="6% 5% 0px 0px;" padding="3%;" _onChange={input_content} />  
+            </Grid>
           </Grid>
           {/* 작성 버튼 */}
           <Btn>
