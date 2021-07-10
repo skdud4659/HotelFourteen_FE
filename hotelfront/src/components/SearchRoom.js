@@ -2,17 +2,19 @@ import React from "react";
 import { format } from "date-fns";
 import { enGB } from "date-fns/locale";
 import { Button, Grid, Image, Text } from "../elements";
+import { useHistory } from "react-router-dom";
 import theme from "../shared/theme";
-import styled from "styled-components";
 
 const SearchRoom = (props) => {
   // 여기서 axios 서버 요청
-  const { startDate, endDate, total, roomType } = props;
+  const { startDate, endDate, adult, child, roomType } = props;
   const start_date = format(startDate, "yyyy-MM-dd", { locale: enGB });
   const end_date = format(endDate, "yyyy-MM-dd", { locale: enGB });
-
+  const history = useHistory();
   // 리덕스에서 받아온 이미지
-
+  const handleReserve = () => {
+    history.push("/book");
+  };
   const room = {
     name: "royal suite",
     price: 30000000,
@@ -55,6 +57,7 @@ const SearchRoom = (props) => {
               border_radius={theme.borderRadius}
               height="70px"
               hover_color={theme.hoverColor}
+              _onClick={handleReserve}
             >
               <Text size="20px" bold={true} color={theme.fontColor}>
                 예약하기

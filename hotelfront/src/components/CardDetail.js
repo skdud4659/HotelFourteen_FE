@@ -1,9 +1,17 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Grid, Image, Text } from "../elements";
 import theme from "../shared/theme";
 
 const CardDetail = (props) => {
   const { title, content, _id, image_url } = props;
+  const history = useHistory();
+
+  const handleOnUpdate = () => {
+    //id값 널기
+    history.push(`/review/${"sadsadada"}`);
+  };
+
   return (
     <Grid
       width="800px"
@@ -35,6 +43,7 @@ const CardDetail = (props) => {
               border_radius={theme.borderRadius}
               height="40px"
               hover_color={theme.hoverColor}
+              _onClick={handleOnUpdate}
             >
               <Text size="20px" bold={true} color={theme.fontColor}>
                 수정하기

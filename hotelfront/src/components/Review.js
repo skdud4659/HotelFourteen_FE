@@ -1,10 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Grid, Text } from "../elements";
 import theme from "../shared/theme";
 import ReviewCard from "./ReviewCard";
 
 const Review = () => {
-  /*
+  const history = useHistory();
+  const handleOnReview = () => {
+    history.push("/review");
+  }; /*
         반복문  props 필요사항
         const title
         const content
@@ -23,6 +27,7 @@ const Review = () => {
         <Button
           border_radius={theme.borderRadius}
           hover_color={theme.hoverColor}
+          _onClick={handleOnReview}
         >
           <Text size="20px" bold={true} color={theme.fontColor}>
             호텔을 이용하신 경험을 이야기 해주세요 ✔

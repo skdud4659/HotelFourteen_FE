@@ -6,15 +6,23 @@ import "react-nice-dates/build/style.css";
 import { Button, Text, Grid } from "../elements";
 import SearchRoom from "./SearchRoom";
 import theme from "../shared/theme";
+import CountCustomer from "./CountCustomer";
+import { useSelector } from "react-redux";
 
 const Calendar = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [focus, setFocus] = useState(START_DATE);
+  //각각 토글
   const [toggleCalender, settoggleCalender] = useState(false);
   const [toggleCheckPerson, settoggleCheckPerson] = useState(false);
   const [toggleSearch, setSearch] = useState(false);
-  const [total, setTotal] = useState(0);
+
+  //인원
+  const adult = useSelector((state) => state.calendar.result.adult);
+  const child = useSelector((state) => state.calendar.result.children);
+
+  //고른 방의 타입 추후 아이디값과 비교하여 전달
   const [roomType, setRoomType] = useState("");
 
   const calendarToggle = () => {
@@ -44,7 +52,7 @@ const Calendar = () => {
   };
 
   const searchToogle = () => {
-    if (!startDate || !endDate || !total || !roomType) {
+    if (!startDate || !endDate || !adult || !child || !roomType) {
       window.alert("선택사항을 모두 선택해 주세요");
       return;
     }
@@ -59,19 +67,6 @@ const Calendar = () => {
       settoggleCheckPerson((prev) => !prev);
     }
     setSearch((prev) => !prev);
-  };
-
-  const addPerson = () => {
-    if (total >= 4) {
-      return;
-    }
-    setTotal((prev) => prev + 1);
-  };
-  const delPerson = () => {
-    if (total <= 1) {
-      return;
-    }
-    setTotal((prev) => prev - 1);
   };
 
   const handleFocusChange = (newFocus) => {
@@ -168,48 +163,7 @@ const Calendar = () => {
       {toggleCheckPerson && (
         <>
           {/* 인원추가 창 */}
-          <Grid
-            is_flex={true}
-            margin="0 auto 10px auto"
-            width="300px"
-            height="70px"
-            bg={theme.gridBgColor}
-            border_radius={theme.borderRadius}
-          >
-            <Button
-              width="70px"
-              height="70px"
-              border_radius="50%"
-              hover_color={theme.hoverColor}
-              _onClick={addPerson}
-            >
-              <Text size="20px" bold={true} color="white">
-                +
-              </Text>
-            </Button>
-            <Grid
-              border_radius={theme.borderRadius}
-              bg={theme.bgColor}
-              is_flex={true}
-              width="120px"
-            >
-              <Text size="20px" bold={true} color={theme.fontColor}>
-                {total ? `${total} 인` : "0 인"}
-              </Text>
-            </Grid>
-
-            <Button
-              width="70px"
-              height="70px"
-              border_radius="50%"
-              hover_color={theme.hoverColor}
-              _onClick={delPerson}
-            >
-              <Text size="20px" bold={true} color="white">
-                -
-              </Text>
-            </Button>
-          </Grid>
+          <CountCustomer />
 
           {/* 상세선택 창 */}
           <Grid
@@ -291,7 +245,8 @@ const Calendar = () => {
           <SearchRoom
             startDate={startDate}
             endDate={endDate}
-            total={total}
+            adult={adult}
+            child={child}
             roomType={roomType}
           />
         </Grid>
