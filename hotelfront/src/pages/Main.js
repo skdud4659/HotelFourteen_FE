@@ -10,7 +10,6 @@ const Main = (props) => {
       <Grid padding="10px 0 10px 0" width="800px">
         <Slider />
       </Grid>
-
       <Calendar />
     </React.Fragment>
   );

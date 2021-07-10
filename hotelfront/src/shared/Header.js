@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, Grid, Text } from "../elements";
+import theme from "./theme";
 
 const Header = (props) => {
   const is_login = false;
@@ -18,8 +19,8 @@ const Header = (props) => {
           <Button
             width="130px"
             height="35px"
-            border_radius="18px"
-            hover_color="rgba(52, 118, 88, 0.5)"
+            border_radius={theme.borderRadius}
+            hover_color={theme.hoverColor}
             margin="0 15px"
           >
             <Text color="ivory" size="17px">
@@ -30,7 +31,8 @@ const Header = (props) => {
             width="130px"
             height="35px"
             border_radius="18px"
-            hover_color="rgba(52, 118, 88, 0.5)"
+            border_radius={theme.borderRadius}
+            hover_color={theme.hoverColor}
             margin=""
           >
             <Text color="ivory" size="17px">
@@ -45,7 +47,8 @@ const Header = (props) => {
             width="200px"
             height="35px"
             border_radius="18px"
-            hover_color="rgba(52, 118, 88, 0.5)"
+            border_radius={theme.borderRadius}
+            hover_color={theme.hoverColor}
             margin=""
           >
             <Text color="ivory" size="17px">
