@@ -1,6 +1,7 @@
 import React from "react";
 import Calendar from "../components/Calendar";
 import Slider from "../components/Slider";
+import Review from "../components/Review";
 
 import { Button, Grid, Input, Text } from "../elements";
 
@@ -11,6 +12,7 @@ const Main = (props) => {
         <Slider />
       </Grid>
       <Calendar />
+      <Review />
     </React.Fragment>
   );
 };
