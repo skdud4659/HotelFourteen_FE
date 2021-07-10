@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Button, Grid, Input, Text } from '../elements';
+import React from "react";
+import styled from "styled-components";
+import { Button, Grid, Input, Text } from "../elements";
 
 const LogIn = (props) => {
   //input 입력값 확인을 위한 함수
@@ -17,7 +17,6 @@ const LogIn = (props) => {
   // //로그인 버튼
   // const loginBtn = () => {
   //   console.log(id, pw)
-
 
   //input 입력값 확인을 위한 함수
   // const [user_name, setUserName] = React.useState("");
@@ -37,6 +36,7 @@ const LogIn = (props) => {
   // }
 
   return (
+
          //로그인 레이아웃 
         //inputboxs
         <Grid bg={'#1f2e3b'} width="60%" height="100%" margin="7% auto">
@@ -72,17 +72,17 @@ const LogIn = (props) => {
               {/* <Button
                 bg_color={"#376a48"}
                 _onClick={loginBtn}>로그인</Button> */}
-              </Grid>
-          </fieldset>
-        </FromBox>
-      </Grid>
+          </Grid>
+        </fieldset>
+      </FromBox>
+    </Grid>
   );
-}
+};
 
 const Box = styled.div`
-  width:100%;
-  height:10%;
-  padding:auto;
+  width: 100%;
+  height: 10%;
+  padding: auto;
   text-align: center;
   padding-top: 5%;
 `;
@@ -90,18 +90,18 @@ const Box = styled.div`
 const FromBox = styled.form`
   width: 70%;
   height: 90%;
-  margin:5% auto;
+  margin: 5% auto;
 `;
 
 const InputBtn = styled.input`
-  width:100%;
+  width: 100%;
   height: 40px;
   border-radius: 30px;
   font-weight: 700;
   border: none;
-  color:white;
+  color: white;
   background-color: #376a48;
-  margin:auto;
+  margin: auto;
   align-content: center;
 `;
 
