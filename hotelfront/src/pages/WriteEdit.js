@@ -1,9 +1,8 @@
 import React from 'react';
 import {Grid, Input, Text, Image, Button} from '../elements';
-import styled from 'styled-components';
 
-import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 import Write from '../components/Write';
 
 
@@ -18,20 +17,10 @@ const WriteEdit = (props) => {
           </Grid>
           {/* write box */}
           <Write />
-          {/* 작성 버튼 */}
-          <Btn>
-            <Button width="80px" height="80px" border_radius="50%" bg_color="rgba(0,0,0,0.0)">
-                <FontAwesomeIcon icon={faCheckCircle} size="5x" color="rgba(52, 118, 88, 1)"/>
-            </Button>
-          </Btn>
       </Grid>
     </React.Fragment>
   );
 }
 
-const Btn = styled.div`
-  float: right;
-  margin-right: 1%;
-`;
 
 export default WriteEdit;
