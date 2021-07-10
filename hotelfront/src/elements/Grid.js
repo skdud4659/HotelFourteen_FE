@@ -12,6 +12,7 @@ const Grid = (props) => {
     margin,
     height,
     border_radius,
+    _onClick,
   } = props;
 
   const styles = {
@@ -24,7 +25,11 @@ const Grid = (props) => {
     border_radius,
     align,
   };
-  return <Wrapper {...styles}>{children}</Wrapper>;
+  return (
+    <Wrapper onClick={_onClick} {...styles}>
+      {children}
+    </Wrapper>
+  );
 };
 
 Grid.defaultProps = {
@@ -37,6 +42,7 @@ Grid.defaultProps = {
   bg: null,
   border_radius: "",
   align: false,
+  _onClick: () => {},
 };
 
 const Wrapper = styled.div`
