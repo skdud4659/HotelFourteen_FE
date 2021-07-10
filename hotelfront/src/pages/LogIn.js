@@ -3,6 +3,21 @@ import styled from 'styled-components';
 import { Button, Grid, Input, Text } from '../elements';
 
 const LogIn = (props) => {
+  //input 입력값 확인을 위한 함수
+  // const [id, setUserId] = React.useState("");
+  // const [pw, setPw] = React.useState("");
+
+  // const input_Id = (e) => {
+  //   setUserId(e.target.value)
+  // }
+  // const input_Pw = (e) => {
+  //   setPw(e.target.value)
+  // }
+
+  // //로그인 버튼
+  // const loginBtn = () => {
+  //   console.log(id, pw)
+
 
   //input 입력값 확인을 위한 함수
   // const [user_name, setUserName] = React.useState("");
@@ -18,6 +33,7 @@ const LogIn = (props) => {
   // //로그인 버튼
   // const loginBtn = () => {
   //   console.log(user_name, pw)
+
   // }
 
   return (
@@ -33,6 +49,12 @@ const LogIn = (props) => {
             <fieldset>
               {/* 닉네임 input */}
               <Grid width="400px" height="50px" padding="5% 0px">
+                <Text bold color="white">아이디</Text>
+                <Input
+                  padding="0px 1%;"
+                  placeholder="아이디를 입력해주세요."
+                  // _onChange={input_Id}
+                  name="id"
                 <Text bold color="white">닉네임</Text>
                 <Input
                   padding="0px 1%;"
@@ -61,7 +83,6 @@ const LogIn = (props) => {
           </fieldset>
         </FromBox>
       </Grid>
-     
   );
 }
 

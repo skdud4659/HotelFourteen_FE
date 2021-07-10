@@ -7,10 +7,14 @@ import { Button, Grid, Input, Text } from '../elements';
 const SignUp = (props) => {
 
   //input 입력값 확인을 위한 함수
+  // const [id, setId] = React.useState("");
   // const [user_name, setUserName] = React.useState("");
   // const [pw, setPw] = React.useState("");
   // const [pw_chk, setPwChk] = React.useState("");
 
+  // const input_ID = (e) => {
+  //   setId(e.target.value)
+  // }
   // const input_UserName = (e) => {
   //   setUserName(e.target.value)
   // }
@@ -23,7 +27,7 @@ const SignUp = (props) => {
 
   // //회원가입 버튼
   // const registerBtn = () => {
-  //   console.log(user_name, pw, pw_chk)
+  //   console.log(id, user_name, pw, pw_chk)
   // }
 
   return (
@@ -37,6 +41,16 @@ const SignUp = (props) => {
           {/* //action="" accept-charset="utf-8" method="post"  */}
           <FromBox name="registerForm">
             <fieldset>
+              {/* 아이디 input */}
+              <Grid width="400px" height="50px" padding="3% 0px">
+                <Text bold color="white">아이디</Text>
+                <Input
+                  padding="0px 1%;"
+                  placeholder="아이디를 입력해주세요."
+                  // _onChange={input_ID}
+                  name="id"
+                  />
+              </Grid>
               {/* 닉네임 input */}
               <Grid width="400px" height="50px" padding="3% 0px">
                 <Text bold color="white">닉네임</Text>
@@ -48,7 +62,7 @@ const SignUp = (props) => {
                   />
               </Grid>
               {/* 비밀번호 input */}
-              <Grid width="400px" height="50px" >
+              <Grid width="400px" height="50px" padding="3% 0px">
                 <Text bold color="white">비밀번호486</Text>
                 <Input
                   padding="0px 1%;"
@@ -58,7 +72,7 @@ const SignUp = (props) => {
                   />
               </Grid>
               {/* 비밀번호 확인 input */}
-              <Grid width="400px" height="50px" padding="5% 0px">
+              <Grid width="400px" height="50px" padding="3% 0px">
                 <Text bold color="white">비밀번호 확인</Text>
                 <Input
                   padding="0px 1%;"
@@ -68,7 +82,7 @@ const SignUp = (props) => {
                   />
               </Grid>
               {/* 회원가입 버튼 */}
-              <Grid width="150px" height="70px" padding="2% 0px 0px 0px">
+              <Grid width="150px" height="70px" padding="5% 0px 3% 0px">
               <InputBtn type="submit" value="회원가입"/>
               {/* <Button
                 bg_color={"#376a48"}
@@ -97,7 +111,7 @@ const FromBox = styled.form`
 
 const InputBtn = styled.input`
   width:100%;
-  height: 25px;
+  height: 40px;
   border-radius: 30px;
   font-weight: 700;
   border: none;

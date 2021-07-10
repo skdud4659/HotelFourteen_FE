@@ -1,7 +1,22 @@
 import React from 'react';
-import {Grid, Image, Input} from '../elements';
+import {Grid, Image, Input, Button} from '../elements';
+import styled from 'styled-components';
+
+import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Write = (props) => {
+
+  const [review, setReview] = React.useState('');
+
+  const input_review = (e) => {
+    setReview(e.target.value)
+  }
+
+  const WriteBtn = () => {
+    console.log(review)
+  }
+
   return (
     <React.Fragment>
       {/* 글쓰기 상자 */}
@@ -22,10 +37,22 @@ const Write = (props) => {
                 </Grid>
             </Grid>
             {/* flex 우측 - textarea */}
-            <Input multiline width="70%" margin="6% 5% 0px 0px;" padding="3%;" />
+            <Input multiline width="70%" margin="6% 5% 0px 0px;" padding="3%;" _onChange={input_review} />
           </Grid>
+          {/* 작성 버튼 */}
+          <Btn>
+            <Button width="80px" height="80px" border_radius="50%" bg_color="rgba(0,0,0,0.0)" _onClick={WriteBtn}>
+                <FontAwesomeIcon icon={faCheckCircle} size="5x" color="rgba(52, 118, 88, 1)"/>
+            </Button>
+          </Btn>
     </React.Fragment>
   );
 }
+
+
+const Btn = styled.div`
+  float: right;
+  margin-right: 1%;
+`;
 
 export default Write;
