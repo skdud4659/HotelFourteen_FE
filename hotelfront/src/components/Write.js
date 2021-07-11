@@ -8,6 +8,8 @@ import { addReview, addReviewDB } from '../redux/modules/review'
 import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { history } from "../redux/configStore";
+
 const Write = (props) => {
   const dispatch = useDispatch();
 
@@ -23,6 +25,7 @@ const Write = (props) => {
   }
 
   const WriteBtn = () => {
+    history.replace('/')
     window.alert('리뷰 작성이 완료되었어요!')
     dispatch(addReviewDB(title, content))
   }
@@ -71,3 +74,4 @@ const Btn = styled.div`
 `;
 
 export default Write;
+
