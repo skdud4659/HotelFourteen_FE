@@ -34,7 +34,7 @@ const CountCustomer = () => {
     dispatch(actionAddChild());
   };
   const delChild = () => {
-    if (child <= 1) {
+    if (child <= 0) {
       return;
     }
     dispatch(actionDelChild());
