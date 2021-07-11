@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import React from 'react';
 import {Grid, Image, Input, Button} from '../elements';
 import styled from 'styled-components';
@@ -28,6 +26,7 @@ const Write = (props) => {
 
   const WriteBtn = () => {
     history.replace('/')
+    window.alert('리뷰 작성이 완료되었어요!')
     dispatch(addReviewDB(title, content))
   }
 
@@ -75,4 +74,4 @@ const Btn = styled.div`
 `;
 
 export default Write;
->>>>>>> Stashed changes
+

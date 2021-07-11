@@ -7,40 +7,29 @@ import SignUp from "../pages/SignUp";
 import WriteEdit from "../pages/WriteEdit";
 
 //라우팅
-import { Route } from "react-router-dom";
-import { ConnectedRouter } from "connected-react-router";
-import { history } from "../redux/configStore";
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 
 import styled from "styled-components";
 import Header from "./Header";
 
 function App() {
   return (
-    <BackGround>
+    <>
       <Wrapper>
         <Header />
       </Wrapper>
-      <ConnectedRouter history={history}>
+      <Switch>
         <Route path="/" exact component={Main} />
         <Route path="/login" exact component={LogIn} />
         <Route path="/register" exact component={SignUp} />
         <Route path="/review" exact component={WriteEdit} />
         <Route path="/review/:id" exact component={WriteEdit} />
-        <Route path="/booking" exact component={Book} />
-      </ConnectedRouter>
-    </BackGround>
+        <Route path="/book" exact component={Book} />
+        <Redirect from="*" to="/" />
+      </Switch>
+    </>
   );
 }
-
-const BackGround = styled.div`
-  background-image: url("https://cdn.pixabay.com/photo/2013/12/09/03/53/northern-lights-225454_1280.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-`;
 
 const Wrapper = styled.div`
   top: 0;
@@ -50,4 +39,4 @@ const Wrapper = styled.div`
   height: 120px;
 `;
 
-export default App;
+export default withRouter(App);

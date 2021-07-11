@@ -1,36 +1,49 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import {Text} from '../elements';
+import { Text } from "../elements";
 
 const Input = (props) => {
+
   const {width, padding, name, height, border, size, margin, label, value, placeholder, _onChange, type, need_value, multiline} = props
 
+
   const styles = {
-    padding:padding,
-    width:width,
-    margin:margin,
-    height:height,
-    border:border,
-    size:size
-  }
+    padding: padding,
+    width: width,
+    margin: margin,
+    height: height,
+    border: border,
+    size: size,
+  };
 
-  if(need_value) {
+  if (need_value) {
     return (
       <React.Fragment>
-      <Text>{label}</Text>
-      <InputBox {...styles} placeholder={placeholder} type={type} onChange={_onChange} value={value}/>
+        <Text>{label}</Text>
+        <InputBox
+          {...styles}
+          placeholder={placeholder}
+          type={type}
+          onChange={_onChange}
+          value={value}
+        />
       </React.Fragment>
-    )
+    );
   }
 
-  if(multiline) {
+  if (multiline) {
     return (
       <React.Fragment>
-      <Text>{label}</Text>
-      <TextArea {...styles} placeholder={placeholder} type={type} onChange={_onChange}/>
+        <TextArea
+          rows={16}
+          {...styles}
+          placeholder={placeholder}
+          type={type}
+          onChange={_onChange}
+        />
       </React.Fragment>
-    )
+    );
   }
 
   return (
@@ -39,9 +52,8 @@ const Input = (props) => {
       <InputBox {...styles} placeholder={placeholder} type={type} name={name} onChange={_onChange} required/>
       </React.Fragment>
   )
-
-
 }
+
 
 Input.defaultProps = {
   width: "100%",
@@ -50,7 +62,6 @@ Input.defaultProps = {
   border : false,
   size : "14px",
   margin : false,
-  
   label : "",
   value : "",
   placeholder : "",
@@ -61,15 +72,16 @@ Input.defaultProps = {
   name : false,
 }
 
+
 const InputBox = styled.input`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   padding: ${(props) => props.padding};
   border: ${(props) => props.border};
-  font-size: ${(props) => props.size};;
+  font-size: ${(props) => props.size};
   margin: ${(props) => props.margin};
   //css 만들면 focus 조절
-`; 
+`;
 
 const TextArea = styled.textarea`
   width: ${(props) => props.width};
@@ -77,9 +89,9 @@ const TextArea = styled.textarea`
   resize: none;
   padding: ${(props) => props.padding};
   border: ${(props) => props.border};
-  font-size: ${(props) => props.size};;
+  font-size: ${(props) => props.size};
   margin: ${(props) => props.margin};
   //css 만들면 focus 조절
-`; 
+`;
 
-export default Input
+export default Input;
