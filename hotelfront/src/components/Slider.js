@@ -12,21 +12,13 @@ import "../index.css";
 import SwiperCore, { Scrollbar } from "swiper/core";
 import { Image } from "../elements";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 // install Swiper modules
 SwiperCore.use([Scrollbar]);
 
 function Slider() {
-  const images = [
-    "https://img.animalplanet.co.kr/news/2020/04/17/700/3169i834vo8yoym5873i.jpg",
-    "https://img.animalplanet.co.kr/news/2020/04/17/700/3169i834vo8yoym5873i.jpg",
-    "https://img.animalplanet.co.kr/news/2020/04/17/700/3169i834vo8yoym5873i.jpg",
-    "https://img.animalplanet.co.kr/news/2020/04/17/700/3169i834vo8yoym5873i.jpg",
-    "https://img.animalplanet.co.kr/news/2020/04/17/700/3169i834vo8yoym5873i.jpg",
-    "https://img.animalplanet.co.kr/news/2020/04/17/700/3169i834vo8yoym5873i.jpg",
-    "https://img.animalplanet.co.kr/news/2020/04/17/700/3169i834vo8yoym5873i.jpg",
-    "https://img.animalplanet.co.kr/news/2020/04/17/700/3169i834vo8yoym5873i.jpg",
-  ];
+  const room_list = useSelector((state) => state.room.room_list);
 
   return (
     <>
@@ -42,7 +34,7 @@ function Slider() {
         }}
         className="mySwiper"
       >
-        {images.map((each) => {
+        {room_list?.map((each) => {
           return (
             <SwiperSlide>
               <ImageDiv>

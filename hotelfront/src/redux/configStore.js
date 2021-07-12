@@ -3,14 +3,13 @@ import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
+// module
 import calendar from "./modules/calendar";
-<<<<<<< Updated upstream
-import review from '../redux/modules/review';
-=======
-import Review from "./modules/review";
+import review from './modules/review';
+import user from "./modules/user";
+import room from "./modules/room";
 
 // base url http://3.35.173.0:3000/
->>>>>>> Stashed changes
 
 //히스토리 객체 만들기
 export const history = createBrowserHistory();
@@ -18,12 +17,11 @@ export const history = createBrowserHistory();
 //루트 리듀서 - (수정)
 //combineReducers({ bucket, a, b... });
 const rootReducer = combineReducers({
+  user: user.reducer,
+  room: room.reducer,
   calendar: calendar.reducer,
-<<<<<<< Updated upstream
   review : review.reducer,
-=======
-  review: Review.reducer,
->>>>>>> Stashed changes
+
   //만든 히스토리를 리듀서에 넣어주기(히스토리와 라우터가 연결됨)
   router: connectRouter(history),
 });
@@ -55,4 +53,3 @@ const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 let store = (initialStore) => createStore(rootReducer, enhancer);
 
 export default store();
-

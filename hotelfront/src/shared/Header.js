@@ -3,9 +3,13 @@ import styled from "styled-components";
 import theme from "./theme";
 import { Button, Grid, Text } from "../elements";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { actionLogOut } from "../redux/modules/user";
 
 const Header = (props) => {
-  const is_login = false;
+  const is_login = useSelector((state) => state.user.is_login);
+  const dispatch = useDispatch();
+
   const history = useHistory();
 
   const handleClickLogin = () => {
@@ -14,6 +18,11 @@ const Header = (props) => {
   const handleClickRegister = () => {
     history.push("/register");
   };
+
+  const handleLogout = () => {
+    dispatch(actionLogOut());
+  };
+
   return (
     <Grid is_flex={true} height="120px" bg="rgba(52, 118, 88, 0.5)">
       <DivForFlex />
@@ -57,10 +66,10 @@ const Header = (props) => {
           <Button
             width="200px"
             height="35px"
-            border_radius="18px"
             border_radius={theme.borderRadius}
             hover_color={theme.hoverColor}
             margin=""
+            _onClick={handleLogout}
           >
             <Text color="ivory" size="17px">
               로그아웃

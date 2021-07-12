@@ -8,6 +8,7 @@ import SearchRoom from "./SearchRoom";
 import theme from "../shared/theme";
 import CountCustomer from "./CountCustomer";
 import { useSelector } from "react-redux";
+import RoomTypeSelector from "./RoomTypeSelector";
 
 const Calendar = () => {
   const [startDate, setStartDate] = useState();
@@ -21,10 +22,9 @@ const Calendar = () => {
   //인원
   const adult = useSelector((state) => state.calendar.result.adult);
   const child = useSelector((state) => state.calendar.result.children);
-
+  const roomType = useSelector((state) => state.calendar.result.roomType);
   //고른 방의 타입 추후 아이디값과 비교하여 전달
-  const [roomType, setRoomType] = useState("");
-
+  console.log(roomType);
   const calendarToggle = () => {
     if (toggleSearch) {
       window.alert("조회하기 버튼을 다시 눌러주세요.");
@@ -40,19 +40,8 @@ const Calendar = () => {
     settoggleCheckPerson((prev) => !prev);
   };
 
-  const selectStandard = () => {
-    setRoomType("Standard");
-  };
-
-  const selectDeluxe = () => {
-    setRoomType("Deluxe");
-  };
-  const selectSuite = () => {
-    setRoomType("Suite");
-  };
-
   const searchToogle = () => {
-    if (!startDate || !endDate || !adult || !child || !roomType) {
+    if (!startDate || !endDate || !adult || !roomType) {
       window.alert("선택사항을 모두 선택해 주세요");
       return;
     }
@@ -166,58 +155,7 @@ const Calendar = () => {
           <CountCustomer />
 
           {/* 상세선택 창 */}
-          <Grid
-            is_flex={true}
-            margin="0 auto 10px auto"
-            width="700px"
-            height="70px"
-            bg={theme.gridBgColor}
-            border_radius={theme.borderRadius}
-          >
-            <Button
-              width="150px"
-              height="70px"
-              border_radius={theme.borderRadius}
-              hover_color={theme.hoverColor}
-              _onClick={selectStandard}
-            >
-              <Text size="20px" bold={true} color="white">
-                Standard
-              </Text>
-            </Button>
-            <Button
-              width="150px"
-              height="70px"
-              border_radius={theme.borderRadius}
-              hover_color={theme.hoverColor}
-              _onClick={selectDeluxe}
-            >
-              <Text size="20px" bold={true} color="white">
-                Deluxe
-              </Text>
-            </Button>
-            <Button
-              width="150px"
-              height="70px"
-              border_radius="20px"
-              hover_color="rgba(52, 118, 88, 0.5)"
-              _onClick={selectSuite}
-            >
-              <Text size="20px" bold={true} color="white">
-                Suite
-              </Text>
-            </Button>
-            <Grid
-              border_radius="20px"
-              bg="rgba(255,255,255, 0.8)"
-              is_flex={true}
-              width="200px"
-            >
-              <Text size="20px" bold={true} color="#0E693F">
-                {roomType ? `✔ ${roomType}` : "선택사항"}
-              </Text>
-            </Grid>
-          </Grid>
+          <RoomTypeSelector />
         </>
       )}
 

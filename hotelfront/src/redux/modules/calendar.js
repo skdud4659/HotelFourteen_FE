@@ -26,6 +26,9 @@ const calendar = createSlice({
     actionDelChild: (state, action) => {
       state.result.children -= 1;
     },
+    actionTypeSelector: (state, action) => {
+      state.result.roomType = action.payload;
+    },
   },
 });
 
@@ -34,6 +37,7 @@ export const {
   actionDelAdult,
   actionAddChild,
   actionDelChild,
+  actionTypeSelector,
 } = calendar.actions;
 
 export default calendar;
