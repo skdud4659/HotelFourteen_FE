@@ -2,17 +2,17 @@ import React from 'react';
 import {Grid, Image, Input, Button} from '../elements';
 import styled from 'styled-components';
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addReview, addReviewDB } from '../redux/modules/review'
 
 import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { history } from "../redux/configStore";
 
 const Write = (props) => {
   const dispatch = useDispatch();
 
+  //input 값
   const [content, setContent] = React.useState('');
   const [title, setTitle] = React.useState('');
 
@@ -24,10 +24,14 @@ const Write = (props) => {
     setTitle(e.target.value)
   }
 
+  //작성 버튼
   const WriteBtn = () => {
-    history.replace('/')
     dispatch(addReviewDB(title, content))
   }
+
+  //수정하기
+  // const review_list = useSelector((state) => state.review.list)
+  // console.log(review_list)
 
   return (
     <React.Fragment>

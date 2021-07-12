@@ -11,6 +11,9 @@ const ReviewCard = (props) => {
     console.log(detail_toggle);
   };
 
+  //props
+  const {title, _id, content, image_url, user_profile} = props
+
   return (
     <>
       <Grid
@@ -26,12 +29,12 @@ const ReviewCard = (props) => {
             <Image
               width="50px"
               height="50px"
-              src={props.user_profile}
+              src={user_profile}
               border_radius="50%"
             />
             <Grid width="300px" is_flex={true}>
               <Text size="15px" color={theme.fontColor} bold={true}>
-                {props.title}
+                {title}
               </Text>
             </Grid>
             <Grid is_flex={true} height="50px" width="300px">
@@ -51,10 +54,9 @@ const ReviewCard = (props) => {
       </Grid>
       {detail_toggle && (
         <CardDetail
-          title={props.title}
-          content={props.content}
-          _id={props._id}
-          image_url={props.image_url}
+          content={content}
+          _id={_id}
+          image_url={image_url}
         />
       )}
     </>

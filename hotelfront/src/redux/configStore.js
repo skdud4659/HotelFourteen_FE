@@ -4,7 +4,13 @@ import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
 import calendar from "./modules/calendar";
+<<<<<<< Updated upstream
 import review from '../redux/modules/review';
+=======
+import Review from "./modules/review";
+
+// base url http://3.35.173.0:3000/
+>>>>>>> Stashed changes
 
 //히스토리 객체 만들기
 export const history = createBrowserHistory();
@@ -13,7 +19,11 @@ export const history = createBrowserHistory();
 //combineReducers({ bucket, a, b... });
 const rootReducer = combineReducers({
   calendar: calendar.reducer,
+<<<<<<< Updated upstream
   review : review.reducer,
+=======
+  review: Review.reducer,
+>>>>>>> Stashed changes
   //만든 히스토리를 리듀서에 넣어주기(히스토리와 라우터가 연결됨)
   router: connectRouter(history),
 });

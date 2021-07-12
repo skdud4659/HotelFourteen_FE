@@ -11,13 +11,7 @@ const Review = () => {
   const history = useHistory();
   const handleOnReview = () => {
     history.push("/review");
-  }; /*
-        반복문  props 필요사항
-        const title
-        const content
-        const _id 
-        image_url
-      */
+  };
 
   const dispatch = useDispatch();
   const review_list = useSelector((state)=>state.review.list)
