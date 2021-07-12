@@ -24,6 +24,8 @@ const room = createSlice({
   },
 });
 
+//{ autherization : `Bearer ${token}` }
+
 const instance = axios.create({
   baseURL: "http://3.35.173.0:3000",
 });
