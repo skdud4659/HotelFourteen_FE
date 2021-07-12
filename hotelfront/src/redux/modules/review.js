@@ -5,17 +5,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import {history} from '../configStore'
-
 // //axios
 const instance = axios.create({
   baseURL: "http://3.35.173.0:3000",
 });
 
 export const addReviewDB = (title, content) => {
-  return function (dispatch, getState) {
+  return function (dispatch, getState, {history}) {
     instance
-      .post("api/review", { title: title, content: content })
+      .post("/api/review", { title: title, content: content })
       .then((res) => {
         window.alert('리뷰 작성을 완료하였어요!')
         dispatch(addReview(title, content))
@@ -29,12 +27,11 @@ export const addReviewDB = (title, content) => {
 };
 
 export const getReviewDB = () => {
-  return function(dispatch, getState) {
+  return function(dispatch, getState, {history}) {
     instance
-      .get('api/review')
+      .get('/api/review')
       .then((res) => {
         let content_list = res.data.reviews
-      
         dispatch(getReview(content_list))
       })
       .catch((err) => {
@@ -42,7 +39,24 @@ export const getReviewDB = () => {
         console.log(err)
       })
   }
-}
+};
+
+export const deleteReviewDB = (reviewId) => {
+  return function(dispatch, getState, {history}) {
+    instance
+      .delete(`/api/review/${reviewId}`)
+      .then((res) => {
+        console.log(res)
+        window.alert('리뷰가 삭제되었습니다!')
+        dispatch(deleteReview(reviewId))
+        history.replace('/')
+      })
+      .catch((err) => {
+        window.alert('앗! 리뷰 삭제에 오류가 있어요!')
+        console.log('err')
+      })
+  }
+};
 
 const initialState = {
   list: [],
@@ -61,13 +75,19 @@ const review = createSlice({
     },
 
     getReview: (state, action) => {
-
       state.list = action.payload
-    }
+    },
+
+    deleteReview: (state, action) => {
+      let idx = state.list.findIndex((r) => r._id === action.payload);
+      if(idx !== -1) {
+        state.list.splice(idx,1);
+      }
+    },
 
   },
 });
 
-export const { addReview, getReview } = review.actions;
+export const { addReview, getReview, deleteReview } = review.actions;
 
 export default review;
