@@ -26,6 +26,22 @@ export const addReviewDB = (title, content) => {
   };
 };
 
+export const getReviewDB = () => {
+  return function(dispatch, getState) {
+    instance
+      .get('api/review')
+      .then((res) => {
+        let content_list = res.data.reviews
+      
+        dispatch(getReview(content_list))
+      })
+      .catch((err) => {
+        window.alert('페이지에 오류가 있어요! 잠시후 다시 시도해주세요.')
+        console.log(err)
+      })
+  }
+}
+
 const initialState = {
   list: [],
 };
@@ -43,9 +59,10 @@ const review = createSlice({
     },
 
     getReview: (state, action) => {
-      console.log("get성공!");
-      // let review_data = [...state.list];
-    },
+
+      state.list = action.payload
+    }
+
   },
 });
 
