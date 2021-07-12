@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Book from "../pages/Book";
 import LogIn from "../pages/LogIn";
@@ -11,8 +11,14 @@ import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 
 import styled from "styled-components";
 import Header from "./Header";
+import { useDispatch } from "react-redux";
+import { actionGetRooms } from "../redux/modules/room";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actionGetRooms());
+  }, []);
   return (
     <>
       <Wrapper>

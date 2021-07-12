@@ -41,7 +41,7 @@ const Calendar = () => {
   };
 
   const searchToogle = () => {
-    if (!startDate || !endDate || !adult || !child || !roomType) {
+    if (!startDate || !endDate || !adult || !roomType) {
       window.alert("선택사항을 모두 선택해 주세요");
       return;
     }
