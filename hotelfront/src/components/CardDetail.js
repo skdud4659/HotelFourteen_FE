@@ -1,18 +1,27 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import {history} from '../redux/configStore';
 import { Button, Grid, Image, Text } from "../elements";
 import theme from "../shared/theme";
 
+import {useDispatch} from 'react-redux'
+import {deleteReview, deleteReviewDB} from '../redux/modules/review'
+
 const CardDetail = (props) => {
-  const history = useHistory();
+  const dispatch = useDispatch()
 
   //props
   const {_id, content, image_url} = props
 
-  //editBtn
-  const editBtn = () => {
-    history.push(`/review/${_id}`)
+  //deleteBtn
+  const deleteBtn = () => {
+    let result = window.confirm('정말 삭제하시겠어요?')
+    result ? dispatch(deleteReviewDB(_id)) : history.push('/');
   }
+
+    //editBtn
+    const editBtn = () => {
+      history.push(`/review/${_id}`)
+    }
 
   return (
     <Grid
@@ -42,6 +51,7 @@ const CardDetail = (props) => {
         <Grid width="200px" height="70px">
           <Grid is_flex={true}>
             <Button
+              key={_id}
               border_radius={theme.borderRadius}
               height="40px"
               hover_color={theme.hoverColor}
@@ -57,6 +67,7 @@ const CardDetail = (props) => {
               border_radius={theme.borderRadius}
               height="40px"
               hover_color={theme.hoverColor}
+              _onClick={deleteBtn}
             >
               <Text size="20px" bold={true} color={theme.fontColor}>
                 삭제하기
