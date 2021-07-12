@@ -26,15 +26,15 @@ function App() {
       <Wrapper>
         <Header />
       </Wrapper>
-      <ConnectedRouter history={history}>
-        <Route path="/" exact component={Main} />
-        <Route path="/login" exact component={LogIn} />
-        <Route path="/register" exact component={SignUp} />
-        <Route path="/review" exact component={WriteEdit} />
-        <Route path="/review/:id" exact component={WriteEdit} />
-        <Route path="/book" exact component={Book} />
-        <Redirect from="*" to="/" />
-      </ConnectedRouter>
+          <ConnectedRouter history={history}>
+            <Route path="/" exact component={Main} />
+            <Route path="/login" exact component={LogIn} />
+            <Route path="/register" exact component={SignUp} />
+            <Route path="/review" exact component={WriteEdit} />
+            <Route path="/review/:_id" exact component={WriteEdit} />
+            <Route path="/book" exact component={Book} />
+            <Redirect from="*" to="/" />
+          </ConnectedRouter>
     </>
   );
 }

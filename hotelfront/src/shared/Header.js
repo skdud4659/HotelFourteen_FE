@@ -19,6 +19,7 @@ const Header = (props) => {
     history.push("/register");
   };
 
+
   const handleLogout = () => {
     dispatch(actionLogOut());
   };
@@ -27,9 +28,11 @@ const Header = (props) => {
     <Grid is_flex={true} height="120px" bg="rgba(52, 118, 88, 0.5)">
       <DivForFlex />
       <Grid is_flex={true}>
-        <Text color="ivory" size="50px" bold={true}>
-          Hotel Fourteen
-        </Text>
+        <A href="/">
+          <Text color="ivory" size="50px" bold={true}>
+            Hotel Fourteen
+          </Text>
+        </A>
       </Grid>
 
       {!is_login && (
@@ -91,6 +94,10 @@ const ButtonDiv = styled.div`
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 30px;
+`;
+
+const A = styled.a`
+  text-decoration: none;
 `;
 
 export default Header;

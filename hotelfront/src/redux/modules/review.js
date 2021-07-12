@@ -20,7 +20,7 @@ export const addReviewDB = (title, content) => {
         history.push('/')
     })
     .catch((err) => {
-      window.alert('리뷰 작성에 오류가 있어요! 잠시후 다시 시도해주세요.')
+      window.alert('리뷰 작성에 오류가 있어요! 관리자에게 문의해주세요.')
       console.log(err)
     })
   };
@@ -35,7 +35,7 @@ export const getReviewDB = () => {
         dispatch(getReview(content_list))
       })
       .catch((err) => {
-        window.alert('페이지에 오류가 있어요! 잠시후 다시 시도해주세요.')
+        window.alert('페이지에 오류가 있어요! 관리자에게 문의해주세요.')
         console.log(err)
       })
   }
@@ -52,8 +52,24 @@ export const deleteReviewDB = (reviewId) => {
         history.replace('/')
       })
       .catch((err) => {
-        window.alert('앗! 리뷰 삭제에 오류가 있어요!')
+        window.alert('앗! 리뷰 삭제에 오류가 있어요! 관리자에게 문의해주세요')
         console.log('err')
+      })
+  }
+};
+
+export const updateReviewDB = (title, content, reviewId) => {
+  return function(dispatch, getState, {history}) {
+    instance
+      .put(`/api/review/${reviewId}`, {title: title, content: content})
+      .then((res) => {
+        console.log(res)
+        window.alert('수정이 완료되었어요!')
+        history.replace('/')
+      })
+      .catch((err) => {
+        window.alert('리뷰 수정에 오류가 있어요! 관리자에게 문의해주세요.')
+        console.log(err)
       })
   }
 };
@@ -85,9 +101,10 @@ const review = createSlice({
       }
     },
 
+    updateReview: (state, action) => {},
   },
 });
 
-export const { addReview, getReview, deleteReview } = review.actions;
+export const { addReview, getReview, deleteReview, updateReview } = review.actions;
 
 export default review;
