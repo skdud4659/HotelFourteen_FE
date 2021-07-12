@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import theme from "../shared/theme";
-import { actionLoginpForDb } from "../redux/modules/user";
+import { actionLoginForDb } from "../redux/modules/user";
 
 const LogIn = (props) => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const LogIn = (props) => {
 
     onSubmit: (values) => {
       // dispatch 자리
-      dispatch(actionLoginpForDb(values));
+      dispatch(actionLoginForDb(values));
     },
   });
 

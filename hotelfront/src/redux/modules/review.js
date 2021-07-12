@@ -11,7 +11,9 @@ const instance = axios.create({
 });
 
 export const addReviewDB = (title, content) => {
+
   return function (dispatch, getState, {history}) {
+
     instance
       .post("/api/review", { title: title, content: content })
       .then((res) => {
@@ -27,6 +29,7 @@ export const addReviewDB = (title, content) => {
 };
 
 export const getReviewDB = () => {
+
   return function(dispatch, getState, {history}) {
     instance
       .get('/api/review')
@@ -56,6 +59,7 @@ export const deleteReviewDB = (reviewId) => {
         console.log('err')
       })
   }
+
 };
 
 export const updateReviewDB = (title, content, reviewId) => {
@@ -91,6 +95,7 @@ const review = createSlice({
     },
 
     getReview: (state, action) => {
+
       state.list = action.payload
     },
 
