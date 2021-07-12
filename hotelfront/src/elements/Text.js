@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Text = (props) => {
 
-  const {margin, color, size, children, bold} = props
+  const {margin, color, size, children, bold, lineHeight} = props
 
   const styles = {
     margin : margin,
@@ -11,6 +11,7 @@ const Text = (props) => {
     size : size,
     children : children,
     bold : bold,
+    lineHeight : lineHeight
   }
 
   return (
@@ -26,6 +27,7 @@ Text.defaultProps = {
   size : "14px",
   children : false,
   bold : false,
+  lineHeight : "",
 }
 
 const P = styled.p`
@@ -33,6 +35,7 @@ const P = styled.p`
   font-weight: ${(props) => props.bold? '700' : '400'};
   font-size: ${(props) => props.size};
   margin: ${(props) => props.margin};
+  line-height: ${(props) => props.lineHeight};
 `;
 
 export default Text;

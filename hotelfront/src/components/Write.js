@@ -26,7 +26,6 @@ const Write = (props) => {
 
   const WriteBtn = () => {
     history.replace('/')
-    window.alert('리뷰 작성이 완료되었어요!')
     dispatch(addReviewDB(title, content))
   }
 
@@ -51,10 +50,12 @@ const Write = (props) => {
             </Grid>
             {/* flex 우측 - textarea */}
             <Grid>
-              <Grid width="70%">
-                <Input width="70%" padding="2%" placeholder="제목을 입력해주세요." _onChange={input_title}></Input>
+              <Grid>
+                <Input width="92%" padding="2%" placeholder="제목을 입력해주세요." _onChange={input_title}></Input>
               </Grid>
-              <Input multiline width="70%" margin="6% 5% 0px 0px;" padding="3%;" _onChange={input_content} />  
+              <Grid>
+              <Input multiline width="90%" margin="6% 5% 0px 0px;" padding="3%;" _onChange={input_content} placeholder="후기를 입력해주세요."/>  
+              </Grid>
             </Grid>
           </Grid>
           {/* 작성 버튼 */}

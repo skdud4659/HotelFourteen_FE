@@ -36,7 +36,7 @@ const Input = (props) => {
     return (
       <React.Fragment>
         <TextArea
-          rows={16}
+          rows={17}
           {...styles}
           placeholder={placeholder}
           type={type}

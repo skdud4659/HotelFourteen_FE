@@ -5,15 +5,6 @@ import CardDetail from "./CardDetail";
 
 const ReviewCard = (props) => {
   const [detail_toggle, setToggle] = useState(false);
-  // Redux
-  const user_profile =
-    "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png";
-  //props
-  const title = "좋아요.";
-  const content = "뷰가 좋습니다.";
-  const _id = "60e7f07cfd1a1465b9a31359";
-  const image_url =
-    "https://ak-d.tripcdn.com/images/022621200084a4yua0A11_R_600_400_R5_D.jpg_.webp";
 
   const handleToggleChange = () => {
     setToggle((prev) => !prev);
@@ -35,12 +26,12 @@ const ReviewCard = (props) => {
             <Image
               width="50px"
               height="50px"
-              src={user_profile}
+              src={props.user_profile}
               border_radius="50%"
             />
             <Grid width="300px" is_flex={true}>
               <Text size="15px" color={theme.fontColor} bold={true}>
-                {title}
+                {props.title}
               </Text>
             </Grid>
             <Grid is_flex={true} height="50px" width="300px">
@@ -60,14 +51,24 @@ const ReviewCard = (props) => {
       </Grid>
       {detail_toggle && (
         <CardDetail
-          title={title}
-          content={content}
-          _id={_id}
-          image_url={image_url}
+          title={props.title}
+          content={props.content}
+          _id={props._id}
+          image_url={props.image_url}
         />
       )}
     </>
   );
 };
+
+ReviewCard.defaultProps = {
+  // Redux
+  user_profile:"https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
+  //props
+  title:"좋아요.",
+  content:"뷰가 좋습니다.",
+  _id:"60e7f07cfd1a1465b9a31359",
+  image_url:"https://ak-d.tripcdn.com/images/022621200084a4yua0A11_R_600_400_R5_D.jpg_.webp",
+}
 
 export default ReviewCard;
