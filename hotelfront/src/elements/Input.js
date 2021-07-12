@@ -41,6 +41,7 @@ const Input = (props) => {
           placeholder={placeholder}
           type={type}
           onChange={_onChange}
+          value={value}
         />
       </React.Fragment>
     );
