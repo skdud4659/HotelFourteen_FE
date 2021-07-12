@@ -1,12 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const room_id = {
+  Deluxe: "60e9448c4e03c013b8c05810",
+  Suite: "60e9449c4e03c013b8c05812",
+  Superior: "60e944a84e03c013b8c05814",
+  "On-dol": "60e944b94e03c013b8c05816",
+  Single: "60e944c54e03c013b8c05818",
+};
+
 const initialState = {
   result: {
     adult: 0,
     children: 0,
-    startDate: null,
-    endDate: null,
     roomType: null,
+    room_id: "",
   },
 };
 
@@ -28,6 +35,7 @@ const calendar = createSlice({
     },
     actionTypeSelector: (state, action) => {
       state.result.roomType = action.payload;
+      state.result.room_id = room_id[action.payload];
     },
   },
 });

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -18,7 +18,7 @@ import { useSelector } from "react-redux";
 SwiperCore.use([Scrollbar]);
 
 function Slider() {
-  const room_list = useSelector((state) => state.room.room_list);
+  const room_list = useSelector((state) => state.room.list);
 
   return (
     <>
@@ -39,7 +39,7 @@ function Slider() {
             <SwiperSlide>
               <ImageDiv>
                 <Image
-                  src={each}
+                  src={each.image}
                   width="600px"
                   height="350px"
                   border_radius="20px"

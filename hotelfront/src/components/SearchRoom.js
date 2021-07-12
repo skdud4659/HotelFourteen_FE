@@ -1,25 +1,42 @@
 import React from "react";
-import { format } from "date-fns";
-import { enGB } from "date-fns/locale";
 import { Button, Grid, Image, Text } from "../elements";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import theme from "../shared/theme";
+import { actionSetBookInfo } from "../redux/modules/book";
 
 const SearchRoom = (props) => {
   // 여기서 axios 서버 요청
   const { startDate, endDate, adult, child, roomType } = props;
-  const start_date = format(startDate, "yyyy-MM-dd", { locale: enGB });
-  const end_date = format(endDate, "yyyy-MM-dd", { locale: enGB });
+
+  const room_info = useSelector((state) => state.room.room);
+  const room_id = useSelector((state) => state.calendar.result.room_id);
+  const dispatch = useDispatch();
+  const difference = (endDate - startDate) / (1000 * 60 * 60 * 24);
+  const price = difference * room_info.price;
   const history = useHistory();
-  // 리덕스에서 받아온 이미지
-  const handleReserve = () => {
-    history.push("/book");
-  };
   const room = {
-    name: "royal suite",
-    price: 30000000,
-    image:
-      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/63/d5/dc/caption.jpg?w=600&h=300&s=1",
+    name: room_info.name,
+    price: price,
+    image: room_info.image,
+  };
+
+  const update_room = {
+    startDate,
+    endDate,
+    adult,
+    child,
+    roomType,
+    room_id,
+  };
+  // 계산용
+  // 리덕스에서 받아온 이미지
+
+  console.log(price);
+  const handleReserve = () => {
+    dispatch(actionSetBookInfo(update_room));
+    history.push("/book");
   };
 
   return (
