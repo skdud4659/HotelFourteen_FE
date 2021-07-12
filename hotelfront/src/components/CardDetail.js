@@ -4,13 +4,15 @@ import { Button, Grid, Image, Text } from "../elements";
 import theme from "../shared/theme";
 
 const CardDetail = (props) => {
-  const { title, content, _id, image_url } = props;
   const history = useHistory();
 
-  const handleOnUpdate = () => {
-    //id값 널기
-    history.push(`/review/${"sadsadada"}`);
-  };
+  //props
+  const {_id, content, image_url} = props
+
+  //editBtn
+  const editBtn = () => {
+    history.push(`/review/${_id}`)
+  }
 
   return (
     <Grid
@@ -33,7 +35,7 @@ const CardDetail = (props) => {
       >
         <Grid is_flex={true} width="200px" height="280px">
           <Text size="20px" bold={true} color={theme.fontColor} lineHeight="30px">
-            {props.content}
+            {content}
           </Text>
         </Grid>
 
@@ -43,7 +45,7 @@ const CardDetail = (props) => {
               border_radius={theme.borderRadius}
               height="40px"
               hover_color={theme.hoverColor}
-              _onClick={handleOnUpdate}
+              _onClick={editBtn}
             >
               <Text size="20px" bold={true} color={theme.fontColor}>
                 수정하기
@@ -68,7 +70,6 @@ const CardDetail = (props) => {
 };
 
 CardDetail.defaultProps = {
-  title:"좋아요.",
   content:"뷰가 좋습니다.",
   _id:"60e7f07cfd1a1465b9a31359",
   image_url:"https://ak-d.tripcdn.com/images/022621200084a4yua0A11_R_600_400_R5_D.jpg_.webp",

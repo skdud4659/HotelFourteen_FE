@@ -5,6 +5,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import {history} from '../configStore'
+
 // //axios
 const instance = axios.create({
   baseURL: "http://3.35.173.0:3000",
@@ -15,14 +17,14 @@ export const addReviewDB = (title, content) => {
     instance
       .post("api/review", { title: title, content: content })
       .then((res) => {
-        console.log(res);
-        window.alert("리뷰 작성을 완료하였어요!");
-        dispatch(addReview(title, content));
-      })
-      .catch((err) => {
-        window.alert("리뷰 작성에 오류가 있어요! 잠시후 다시 시도해주세요.");
-        console.log(err);
-      });
+        window.alert('리뷰 작성을 완료하였어요!')
+        dispatch(addReview(title, content))
+        history.push('/')
+    })
+    .catch((err) => {
+      window.alert('리뷰 작성에 오류가 있어요! 잠시후 다시 시도해주세요.')
+      console.log(err)
+    })
   };
 };
 

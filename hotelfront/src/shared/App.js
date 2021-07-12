@@ -7,7 +7,9 @@ import SignUp from "../pages/SignUp";
 import WriteEdit from "../pages/WriteEdit";
 
 //라우팅
-import { Redirect, Route, Switch, withRouter } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
+import {ConnectedRouter} from 'connected-react-router';
+import {history} from '../redux/configStore';
 
 import styled from "styled-components";
 import Header from "./Header";
@@ -24,7 +26,7 @@ function App() {
       <Wrapper>
         <Header />
       </Wrapper>
-      <Switch>
+      <ConnectedRouter history={history}>
         <Route path="/" exact component={Main} />
         <Route path="/login" exact component={LogIn} />
         <Route path="/register" exact component={SignUp} />
@@ -32,7 +34,7 @@ function App() {
         <Route path="/review/:id" exact component={WriteEdit} />
         <Route path="/book" exact component={Book} />
         <Redirect from="*" to="/" />
-      </Switch>
+      </ConnectedRouter>
     </>
   );
 }
@@ -45,4 +47,4 @@ const Wrapper = styled.div`
   height: 120px;
 `;
 
-export default withRouter(App);
+export default App;

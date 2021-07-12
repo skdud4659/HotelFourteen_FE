@@ -69,7 +69,7 @@ Input.defaultProps = {
   type : "text",
   need_value : false,
   multiline :false,
-  name : false,
+  name : "",
 }
 
 
