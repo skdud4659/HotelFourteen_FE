@@ -19,9 +19,8 @@ const Review = () => {
   React.useEffect(() => {
     dispatch(getReviewDB())
   },[])
-  console.log(review_list)
 
- 
+
     return (
       <Grid margin="10px auto 10px auto" width="800px">
         <Grid
