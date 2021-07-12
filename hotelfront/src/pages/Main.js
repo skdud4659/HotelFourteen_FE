@@ -12,7 +12,13 @@ const Main = (props) => {
         <Slider />
       </Grid>
       <Calendar />
-      <Review />
+      <Grid>
+        
+      </Grid>
+        <Grid>
+          <Review/>
+        </Grid>
+      
     </React.Fragment>
   );
 };

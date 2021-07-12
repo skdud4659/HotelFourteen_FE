@@ -31,9 +31,9 @@ const CardDetail = (props) => {
         bg={theme.innerBoxColor}
         border_radius={theme.borderRadius}
       >
-        <Grid is_flex={true} width="250px" height="280px">
-          <Text size="15px" bold={true} color={theme.fontColor}>
-            {content}
+        <Grid is_flex={true} width="200px" height="280px">
+          <Text size="20px" bold={true} color={theme.fontColor} lineHeight="30px">
+            {props.content}
           </Text>
         </Grid>
 
@@ -66,5 +66,12 @@ const CardDetail = (props) => {
     </Grid>
   );
 };
+
+CardDetail.defaultProps = {
+  title:"좋아요.",
+  content:"뷰가 좋습니다.",
+  _id:"60e7f07cfd1a1465b9a31359",
+  image_url:"https://ak-d.tripcdn.com/images/022621200084a4yua0A11_R_600_400_R5_D.jpg_.webp",
+}
 
 export default CardDetail;
