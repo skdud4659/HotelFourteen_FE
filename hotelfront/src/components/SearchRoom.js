@@ -29,6 +29,7 @@ const SearchRoom = (props) => {
     child,
     roomType,
     room_id,
+    price,
   };
   // 계산용
   // 리덕스에서 받아온 이미지
