@@ -97,6 +97,8 @@ const LogIn = (props) => {
               _onChange={formik.handleChange}
               value={formik.values.userId}
               height="40px"
+              border_radius="15px"
+              margin="10px 0 10px 0"
             />
             {formik.touched.userId && formik.errors.userId ? (
               <HelperMsg>{formik.errors.userId}</HelperMsg>
@@ -117,6 +119,8 @@ const LogIn = (props) => {
               _onChange={formik.handleChange}
               value={formik.values.pwd}
               height="40px"
+              border_radius="15px"
+              margin="10px 0 10px 0"
             />
             {formik.touched.pwd && formik.errors.pwd ? (
               <HelperMsg>{formik.errors.pwd}</HelperMsg>

@@ -97,6 +97,8 @@ const SignUp = (props) => {
             _onChange={formik.handleChange}
             value={formik.values.userId}
             height="40px"
+            border_radius="15px"
+            margin="10px 0 10px 0"
           />
           {/* 닉네임 input */}
           {formik.touched.userId && formik.errors.userId ? (
@@ -117,6 +119,8 @@ const SignUp = (props) => {
             _onChange={formik.handleChange}
             value={formik.values.userName}
             height="40px"
+            border_radius="15px"
+            margin="10px 0 10px 0"
           />
           {formik.touched.userName && formik.errors.userName ? (
             <HelperMsg>{formik.errors.userName}</HelperMsg>
@@ -137,6 +141,8 @@ const SignUp = (props) => {
             _onChange={formik.handleChange}
             value={formik.values.pwd}
             height="40px"
+            border_radius="15px"
+            margin="10px 0 10px 0"
           />
           {formik.touched.pwd && formik.errors.pwd ? (
             <HelperMsg>{formik.errors.pwd}</HelperMsg>
@@ -157,6 +163,8 @@ const SignUp = (props) => {
             _onChange={formik.handleChange}
             value={formik.values.pwdCheck}
             height="40px"
+            border_radius="15px"
+            margin="10px 0 10px 0"
           />
 
           {formik.touched.pwdCheck && formik.errors.pwdCheck ? (

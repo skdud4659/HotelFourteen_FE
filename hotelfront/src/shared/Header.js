@@ -23,7 +23,6 @@ const Header = (props) => {
     history.push("/mypage");
   };
 
-
   const handleLogout = () => {
     dispatch(actionLogOut());
   };
