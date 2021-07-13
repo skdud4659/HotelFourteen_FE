@@ -52,7 +52,61 @@ export const actionBookingforDb =
         window.alert(book.data.message);
         return;
       }
+<<<<<<< Updated upstream
       console.log(book);
+=======
+      window.alert("예약이 완료되었습니다.");
+      history.replace("/");
+    } catch (error) {
+      window.alert(error.message);
+    }
+  };
+/////
+const room_id = {
+  "60e9448c4e03c013b8c05810": "Deluxe",
+  "60e9449c4e03c013b8c05812": "Suite",
+  "60e944a84e03c013b8c05814": "Superior",
+  "60e944b94e03c013b8c05816": "On-dol",
+  "60e944c54e03c013b8c05818": "Single",
+};
+
+export const actionUserBookInfo =
+  () =>
+  async (dispatch, getState, { history }) => {
+    const nickname = getState().user.user_info.nickname;
+
+    try {
+      const book_list = await instance.get("/api/book");
+      const user_book_list = book_list.data.books.filter((each) => {
+        return each.userId.nickname === nickname;
+      });
+      const user_book_info = user_book_list.map((each) => {
+        return {
+          adult: each.adult,
+          endDate: new Date(each.endDate),
+          kid: each.kid,
+          price: each.price,
+          roomType: room_id[each.roomId],
+          startDate: new Date(each.startDate),
+          book_id: each._id,
+        };
+      });
+      console.log(user_book_info);
+      dispatch(actionSetUserBookInfo(user_book_info));
+    } catch (error) {
+      window.alert(error.message);
+    }
+  };
+
+export const actionDelReservation =
+  (book_id) =>
+  async (dispatch, getState, { history }) => {
+    try {
+      await instance.delete(`/api/book/${book_id}`);
+      dispatch(actionDelUserBookInfo(book_id));
+      history.push("/");
+      window.alert("예약이 취소되었습니다.");
+>>>>>>> Stashed changes
     } catch (error) {
       window.alert(error.message);
     }
