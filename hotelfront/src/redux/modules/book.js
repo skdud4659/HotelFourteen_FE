@@ -15,8 +15,17 @@ const initialState = {
     roomType: "",
     room_id: "",
   },
+  user_book_info: [],
   is_ready: false,
 };
+
+/*        adult: each.adult,
+          endDate: each.endDate,
+          kid: each.kid,
+          price: each.price,
+          roomType: room_id[each.roomId],
+          startDate: each.startDate,
+          book_id: each.userId._id, */
 
 const book = createSlice({
   name: "book",
@@ -25,6 +34,15 @@ const book = createSlice({
     actionSetBookInfo: (state, action) => {
       state.book_info = { ...action.payload };
       state.is_ready = true;
+    },
+    actionSetUserBookInfo: (state, action) => {
+      state.user_book_info = action.payload;
+    },
+    actionDelUserBookInfo: (state, action) => {
+      const new_book_info = state.user_book_info.filter((each) => {
+        return each.book_id !== action.payload;
+      });
+      state.user_book_info = new_book_info;
     },
   },
 });
@@ -43,19 +61,17 @@ export const actionBookingforDb =
       adult: book_info.adult,
       kid: book_info.child,
       roomId: book_info.room_id,
-      startDate: String(book_info.startDate),
-      endDate: String(book_info.endDate),
+      startDate: book_info.startDate,
+      endDate: book_info.endDate,
     };
     try {
-      const book = await instance.post("/api/book");
+      const book = await instance.post("/api/book", book_arr);
+      console.log(book);
       if (book.data.message === "fail") {
         window.alert(book.data.message);
         return;
       }
-<<<<<<< Updated upstream
-      console.log(book);
-=======
-      window.alert("예약이 완료되었습니다.");
+      window.alert("예약이 완료되었읍니다.");
       history.replace("/");
     } catch (error) {
       window.alert(error.message);
@@ -91,7 +107,6 @@ export const actionUserBookInfo =
           book_id: each._id,
         };
       });
-      console.log(user_book_info);
       dispatch(actionSetUserBookInfo(user_book_info));
     } catch (error) {
       window.alert(error.message);
@@ -106,12 +121,15 @@ export const actionDelReservation =
       dispatch(actionDelUserBookInfo(book_id));
       history.push("/");
       window.alert("예약이 취소되었습니다.");
->>>>>>> Stashed changes
     } catch (error) {
       window.alert(error.message);
     }
   };
 
-export const { actionSetBookInfo } = book.actions;
+export const {
+  actionSetBookInfo,
+  actionSetUserBookInfo,
+  actionDelUserBookInfo,
+} = book.actions;
 
 export default book;

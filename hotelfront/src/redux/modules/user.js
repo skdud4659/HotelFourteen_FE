@@ -104,7 +104,6 @@ export const actionLoginChecker =
         window.alert(confirm.data.message);
         return;
       }
-      console.log(confirm.data.user);
       dispatch(actionSetNick(confirm.data.user));
     } catch (error) {
       window.alert(error.message);
