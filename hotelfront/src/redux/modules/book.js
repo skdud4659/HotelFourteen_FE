@@ -38,6 +38,12 @@ const book = createSlice({
     actionSetUserBookInfo: (state, action) => {
       state.user_book_info = action.payload;
     },
+    actionDelUserBookInfo: (state, action) => {
+      const new_book_info = state.user_book_info.filter((each) => {
+        return each.book_id !== action.payload;
+      });
+      state.user_book_info = new_book_info;
+    },
   },
 });
 
@@ -98,15 +104,33 @@ export const actionUserBookInfo =
           price: each.price,
           roomType: room_id[each.roomId],
           startDate: new Date(each.startDate),
-          book_id: each.userId._id,
+          book_id: each._id,
         };
       });
+      console.log(book_list);
       dispatch(actionSetUserBookInfo(user_book_info));
     } catch (error) {
       window.alert(error.message);
     }
   };
 
-export const { actionSetBookInfo, actionSetUserBookInfo } = book.actions;
+export const actionDelReservation =
+  (book_id) =>
+  async (dispatch, getState, { history }) => {
+    try {
+      await instance.delete(`/api/book/${book_id}`);
+      dispatch(actionDelUserBookInfo(book_id));
+      history.push("/");
+      window.alert("예약이 취소되었습니다.");
+    } catch (error) {
+      window.alert(error.message);
+    }
+  };
+
+export const {
+  actionSetBookInfo,
+  actionSetUserBookInfo,
+  actionDelUserBookInfo,
+} = book.actions;
 
 export default book;
