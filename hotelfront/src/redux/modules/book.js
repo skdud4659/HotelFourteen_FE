@@ -43,16 +43,18 @@ export const actionBookingforDb =
       adult: book_info.adult,
       kid: book_info.child,
       roomId: book_info.room_id,
-      startDate: String(book_info.startDate),
-      endDate: String(book_info.endDate),
+      startDate: book_info.startDate,
+      endDate: book_info.endDate,
     };
     try {
-      const book = await instance.post("/api/book");
+      const book = await instance.post("/api/book", book_arr);
+      console.log(book);
       if (book.data.message === "fail") {
         window.alert(book.data.message);
         return;
       }
-      console.log(book);
+      window.alert("예약이 완료되었읍니다.");
+      history.replace("/");
     } catch (error) {
       window.alert(error.message);
     }
