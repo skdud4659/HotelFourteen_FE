@@ -2,10 +2,11 @@
 
 와이어프레임 : https://www.figma.com/file/O4IB0kbXsRz8xi6oZrjNLI/Untitled?node-id=0%3A1
 
-## 🧚🏻‍♀️항해99 미니프로젝트 14조 - 프론트
+## 🙌🏻member
 - 나영 > 리뷰 CRUD
-- 원교 > 로그인&회원가입 / 
+- 원교 > 로그인&회원가입 / 예약
 
+### ✍🏻 프로젝트 소스
 @최소단위 엘리먼트
 - Grid
 - Text
