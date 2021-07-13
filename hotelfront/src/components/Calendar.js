@@ -7,13 +7,15 @@ import { Button, Text, Grid } from "../elements";
 import SearchRoom from "./SearchRoom";
 import theme from "../shared/theme";
 import CountCustomer from "./CountCustomer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import RoomTypeSelector from "./RoomTypeSelector";
+import { actionGetOneRoom } from "../redux/modules/room";
 
 const Calendar = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [focus, setFocus] = useState(START_DATE);
+  const dispatch = useDispatch();
   //각각 토글
   const [toggleCalender, settoggleCalender] = useState(false);
   const [toggleCheckPerson, settoggleCheckPerson] = useState(false);
@@ -24,7 +26,7 @@ const Calendar = () => {
   const child = useSelector((state) => state.calendar.result.children);
   const roomType = useSelector((state) => state.calendar.result.roomType);
   //고른 방의 타입 추후 아이디값과 비교하여 전달
-  console.log(roomType);
+
   const calendarToggle = () => {
     if (toggleSearch) {
       window.alert("조회하기 버튼을 다시 눌러주세요.");
@@ -55,6 +57,7 @@ const Calendar = () => {
     if (toggleCheckPerson) {
       settoggleCheckPerson((prev) => !prev);
     }
+    dispatch(actionGetOneRoom());
     setSearch((prev) => !prev);
   };
 

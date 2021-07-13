@@ -9,17 +9,25 @@ import MyPage from '../pages/Mypage'
 
 //라우팅
 import { Redirect, Route } from "react-router-dom";
-import {ConnectedRouter} from 'connected-react-router';
-import {history} from '../redux/configStore';
+import { ConnectedRouter } from "connected-react-router";
+import { history } from "../redux/configStore";
 
 import styled from "styled-components";
 import Header from "./Header";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionGetRooms } from "../redux/modules/room";
 
+import { actionLoginChecker } from "../redux/modules/user";
+
 function App() {
+  const is_login = useSelector((state) => state.user.is_login);
+  const is_ready = useSelector((state) => state.book.is_ready);
   const dispatch = useDispatch();
+
   useEffect(() => {
+    if (!is_login) {
+      dispatch(actionLoginChecker());
+    }
     dispatch(actionGetRooms());
   }, []);
   return (
@@ -33,10 +41,9 @@ function App() {
             <Route path="/register" exact component={SignUp} />
             <Route path="/review" exact component={WriteEdit} />
             <Route path="/review/:_id" exact component={WriteEdit} />
-            <Route path="/book" exact component={Book} />
+            {is_ready && <Route path="/book" exact component={Book} />}
             <Route path="/mypage" exact component={MyPage} />
             <Redirect from="*" to="/" />
-          </ConnectedRouter>
     </>
   );
 }
