@@ -71,7 +71,7 @@ export const actionBookingforDb =
         window.alert(book.data.message);
         return;
       }
-      window.alert("예약이 완료되었습니다.");
+      window.alert("예약이 완료되었어요! 산타의 선물로 결제는 필요없어요!");
       history.replace("/");
     } catch (error) {
       window.alert(error.message);

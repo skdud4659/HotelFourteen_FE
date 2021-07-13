@@ -5,6 +5,7 @@ import theme from "../shared/theme";
 
 import { useSelector, useDispatch } from "react-redux";
 import { deleteReview, deleteReviewDB} from "../redux/modules/review";
+import reviewImg from '../img/review_img.jpeg'
 
 import moment from "moment";
 
@@ -40,7 +41,7 @@ const CardDetail = (props) => {
     >
       {/** 이미지 */}
       <Grid width="480px" height="450px" margin="0 10px 0 20px">
-        <Image src={image_url} border_radius={theme.borderRadius} />
+        <Image src={reviewImg} border_radius={theme.borderRadius} />
       </Grid>
       {/**제목, 내용 */}
       <Grid
