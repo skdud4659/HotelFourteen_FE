@@ -54,8 +54,8 @@ export const actionSignupForDb =
         window.alert(signup.data.message);
         return;
       }
-
       history.replace("/login");
+      window.alert("회원가입이 완료되었습니다. 로그인해 주세요.");
     } catch (data) {
       window.alert(data.message);
     }
@@ -83,9 +83,9 @@ export const actionLoginForDb =
         token: login.data.token,
         nickname: login.data.nickname,
       };
-      console.log(login_info);
       dispatch(actionSetUser(login_info));
       history.replace("/");
+      window.alert("로그인이 완료되었습니다. 즐거운 여행되세요.");
     } catch (error) {
       window.alert(error.message);
     }
@@ -104,7 +104,8 @@ export const actionLoginChecker =
         window.alert(confirm.data.message);
         return;
       }
-      actionSetNick(confirm.data.nickname);
+      console.log(confirm.data.user);
+      dispatch(actionSetNick(confirm.data.user));
     } catch (error) {
       window.alert(error.message);
     }

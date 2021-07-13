@@ -1,31 +1,31 @@
 import React from "react";
-import {history} from '../redux/configStore';
+import { history } from "../redux/configStore";
 import { Button, Grid, Image, Text } from "../elements";
 import theme from "../shared/theme";
 
-import {useDispatch} from 'react-redux'
-import {deleteReview, deleteReviewDB} from '../redux/modules/review'
+import { useDispatch } from "react-redux";
+import { deleteReview, deleteReviewDB } from "../redux/modules/review";
 
-import moment from 'moment'
+import moment from "moment";
 
 const CardDetail = (props) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   //props
-  const {title, _id, content, date, userId, user_profile, image_url} = props
+  const { title, _id, content, date, userId, user_profile, image_url } = props;
 
-  const insert_d = moment(date).format("dddd MMM Do YY")
+  const insert_d = moment(date).format("dddd MMM Do YY");
 
   //deleteBtn
   const deleteBtn = () => {
-    let result = window.confirm('정말 삭제하시겠어요?')
-    result ? dispatch(deleteReviewDB(_id)) : history.push('/');
-  }
+    let result = window.confirm("정말 삭제하시겠어요?");
+    result ? dispatch(deleteReviewDB(_id)) : history.push("/");
+  };
 
-    //editBtn
-    const editBtn = () => {
-      history.push(`/review/${_id}`)
-    }
+  //editBtn
+  const editBtn = () => {
+    history.push(`/review/${_id}`);
+  };
 
   return (
     <Grid
@@ -47,7 +47,9 @@ const CardDetail = (props) => {
         border_radius={theme.borderRadius}
       >
         <Grid width="90%" height="5%" align="right" padding="7% 0px 0px 0px">
-          <Text color={'white'} size="17px" bold>{insert_d}</Text>
+          <Text color={"white"} size="17px" bold>
+            {insert_d}
+          </Text>
         </Grid>
         <Grid is_flex width="200px" height="250px">
           <Text size="20px" bold color={theme.fontColor} lineHeight="30px">
@@ -88,9 +90,11 @@ const CardDetail = (props) => {
 };
 
 CardDetail.defaultProps = {
-  //나중에 
-  user_profile:"https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
-  image_url:"https://ak-d.tripcdn.com/images/022621200084a4yua0A11_R_600_400_R5_D.jpg_.webp",
+  //나중에
+  user_profile:
+    "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
+  image_url:
+    "https://ak-d.tripcdn.com/images/022621200084a4yua0A11_R_600_400_R5_D.jpg_.webp",
 
   //db
   _id: "60ec33bc4a02d368fdf9170c",
@@ -99,8 +103,8 @@ CardDetail.defaultProps = {
   date: "Mon Jul 12 2021",
   userId: {
     _id: "60ec30cbff7f286051745a60",
-    nickname: "garden1"
+    nickname: "garden1",
   },
-}
+};
 
 export default CardDetail;
