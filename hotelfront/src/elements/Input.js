@@ -5,7 +5,7 @@ import { Text } from "../elements";
 
 const Input = (props) => {
 
-  const {width, padding, name, height, border, size, margin, label, value, placeholder, _onChange, type, need_value, multiline} = props
+  const {width, padding, bg, name, height, border, size, margin, label, value, placeholder, _onChange, type, need_value, multiline} = props
 
 
   const styles = {
@@ -15,6 +15,7 @@ const Input = (props) => {
     height: height,
     border: border,
     size: size,
+    bg:bg,
   };
 
   if (need_value) {
@@ -71,6 +72,7 @@ Input.defaultProps = {
   need_value : false,
   multiline :false,
   name : "",
+  bg: null,
 }
 
 
@@ -81,6 +83,7 @@ const InputBox = styled.input`
   border: ${(props) => props.border};
   font-size: ${(props) => props.size};
   margin: ${(props) => props.margin};
+  background-color: ${(props) => props.bg};
   //css 만들면 focus 조절
 `;
 
@@ -92,6 +95,7 @@ const TextArea = styled.textarea`
   border: ${(props) => props.border};
   font-size: ${(props) => props.size};
   margin: ${(props) => props.margin};
+  background-color: ${(props) => props.bg};
   //css 만들면 focus 조절
 `;
 

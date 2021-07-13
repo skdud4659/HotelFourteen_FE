@@ -3,6 +3,8 @@ import { Button, Grid, Image, Text } from "../elements";
 import theme from "../shared/theme";
 import CardDetail from "./CardDetail";
 
+import profile_img from '../img/favicon4.PNG'
+
 
 const ReviewCard = (props) => {
   const [detail_toggle, setToggle] = useState(false);
@@ -13,7 +15,7 @@ const ReviewCard = (props) => {
   };
 
   //props
-  const {title, _id, content, date, userId, user_profile, image_url} = props
+  const {title, _id, content, date, userId, nickname, user_profile, image_url} = props
 
   return (
     <>
@@ -34,7 +36,7 @@ const ReviewCard = (props) => {
               border_radius="50%"
             />
             <Grid width="auto" padding="3.5% 0px 3.5% 2%">
-              <Text color={'white'} size="16px">{userId.nickname}</Text>
+              <Text color={'white'} size="16px">{nickname}</Text>
             </Grid>
             <Grid width="300px" is_flex>
               <Text size="15px" color={theme.fontColor} bold>
@@ -67,8 +69,8 @@ const ReviewCard = (props) => {
 
 ReviewCard.defaultProps = {
   //나중에 
-  user_profile:"https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
-  image_url:"https://ak-d.tripcdn.com/images/022621200084a4yua0A11_R_600_400_R5_D.jpg_.webp",
+  user_profile: profile_img,
+  image_url:"https://lh3.googleusercontent.com/proxy/-r05vLKRnd5jp9TZLDaB_RVMizXrL3YwmF1oeRf5CI17-_koilXwJLsLPxAzruFd3mPi0GRRNiDOEUVTmWt2DdltIoYF6-fQvlPqvdVLMSzVcMKULykNDz1V8XQSfkCEfQ",
 
   //db
   _id: "60ec33bc4a02d368fdf9170c",
@@ -77,8 +79,8 @@ ReviewCard.defaultProps = {
   date: "Mon Jul 12 2021 21:21:16 GMT+0900 (Korean Standard Time)",
   userId: {
     _id: "60ec30cbff7f286051745a60",
-    nickname: "garden1"
   },
+  nickname: "garden1",
 }
 
 export default ReviewCard;
