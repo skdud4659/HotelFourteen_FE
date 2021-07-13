@@ -5,7 +5,7 @@ import { Text } from "../elements";
 
 const Input = (props) => {
 
-  const {width, padding, bg, name, height, border, size, margin, label, value, placeholder, _onChange, type, need_value, multiline} = props
+  const {width, padding, multiline_value, bg, name, height, border, size, margin, label, value, placeholder, _onChange, type, need_value, multiline} = props
 
 
   const styles = {
@@ -47,6 +47,19 @@ const Input = (props) => {
       </React.Fragment>
     );
   }
+  if (multiline_value) {
+    return (
+      <React.Fragment>
+        <TextArea
+          rows={17}
+          {...styles}
+          placeholder={placeholder}
+          type={type}
+          onChange={_onChange}
+        />
+      </React.Fragment>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -71,6 +84,7 @@ Input.defaultProps = {
   type : "text",
   need_value : false,
   multiline :false,
+  multiline_value :false,
   name : "",
   bg: null,
 }
