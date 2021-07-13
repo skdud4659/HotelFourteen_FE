@@ -157,7 +157,7 @@ const Write = (props) => {
     );
   }
 
-  //삭제일 때
+  //글쓰기일 때
   return (
     <React.Fragment>
       {/* 글쓰기 상자 */}
@@ -200,7 +200,7 @@ const Write = (props) => {
           </Grid>
           <Grid>
             <Input
-              multiline
+              multiline_noValue
               width="90%"
               margin="6% 5% 0px 0px;"
               padding="3%;"

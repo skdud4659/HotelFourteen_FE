@@ -71,7 +71,7 @@ export const actionBookingforDb =
         window.alert(book.data.message);
         return;
       }
-      window.alert("예약이 완료되었읍니다.");
+      window.alert("예약이 완료되었습니다.");
       history.replace("/");
     } catch (error) {
       window.alert(error.message);

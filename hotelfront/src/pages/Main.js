@@ -24,10 +24,10 @@ const Main = (props) => {
         <Grid>
           <Review />
         </Grid>
-        <UpDiv onClick={handleUp}>
-          <FontAwesomeIcon icon={faArrowCircleUp} size="5x" />
-        </UpDiv>
       </Grid>
+      <UpDiv onClick={handleUp}>
+          <FontAwesomeIcon icon={faArrowCircleUp} size="5x" />
+      </UpDiv>
     </React.Fragment>
   );
 };
@@ -39,10 +39,7 @@ const UpDiv = styled.div`
   background-color: ${theme.fontColor};
   height: 80px;
   bottom: 50px;
-  left: 700px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  left: 2%;
   border-radius: 50%;
   transition: background-color 0.3s;
   :hover {
