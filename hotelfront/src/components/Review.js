@@ -13,15 +13,14 @@ const Review = () => {
   const is_login = useSelector((state) => state.user.is_login);
 
   const handleOnReview = () => {
-    history.push('/review')
-    // if(!is_login) {
-    //   let result = window.confirm('로그인이 필요해요! 로그인 페이지로 이동할까요?')
-    //   result ? history.push('/login') : history.push('/');
-    // }
+    if(!is_login) {
+      let result = window.confirm('로그인이 필요해요! 로그인 페이지로 이동할까요?')
+      result ? history.push('/login') : history.push('/');
+    }
 
-    // if(is_login) {
-    //   history.push("/review");
-    // }
+    if(is_login) {
+      history.push("/review");
+    }
   };
 
   const dispatch = useDispatch();

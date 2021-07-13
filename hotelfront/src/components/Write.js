@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Write_video from '../video/pexels-nicolas-becker-5600929.mp4'
 
 import {history} from '../redux/configStore';
+import theme from '../shared/theme';
 
 
 const Write = (props) => {
@@ -66,27 +67,28 @@ const Write = (props) => {
     return (
       <React.Fragment>
       {/* 글쓰기 상자 */}
-      <Grid is_flex bg={'rgba(0,0,0,0.1)'} width="70%" height="100%" margin="2% auto" padding="2% 5% 5% 5%">
+      <Grid is_flex bg={'rgba(0,0,0,0.1)'} width="800px" height="100%" margin="2% auto" padding="2% 3% 2% 3%" border_radius={theme.borderRadius}>
             {/* flex 좌측 */}
-            <Grid>
+            <Grid width="400px">
               {/* 파일 */}
                 {/* <Grid width="70px" height="auto" padding="5% 0px 0px 0px" margin="0px 0px 0px 5%"> 
                     <Input type={'file'} id="input"></Input>
                 </Grid> */}
                 {/* video*/}
-                <Grid>
+                <Grid width="400px">
                   <Write_vid controls autoPlay loop muted>
                     <source src={Write_video} type="video/mp4" />
                   </Write_vid>
                 </Grid>
             </Grid>
             {/* flex 우측 - textarea */}
-            <Grid>
+            <Grid margin="0px 0px 0px 7%">
               <Grid>
                 <Input
                   need_value
-                  width="92%"
+                  width="90%"
                   padding="2%"
+                  size="16px"
                   placeholder="제목을 입력해주세요."
                   _onChange={input_title}
                   value={title}></Input>
@@ -97,6 +99,7 @@ const Write = (props) => {
                 width="90%"
                 margin="6% 5% 0px 0px;"
                 padding="3%;"
+                size="16px"
                 _onChange={input_content}
                 placeholder="후기를 입력해주세요."
                 value={content}/>  
@@ -133,26 +136,27 @@ const Write = (props) => {
   return (
     <React.Fragment>
       {/* 글쓰기 상자 */}
-      <Grid is_flex bg={'rgba(0,0,0,0.1)'} width="70%" height="100%" margin="2% auto" padding="2% 5% 5% 5%">
+      <Grid is_flex bg={theme.gridBgColor} width="800px" height="100%" margin="2% auto" padding="2% 3% 2% 3%" border_radius={theme.borderRadius}>
             {/* flex 좌측 */}
-            <Grid>
+            <Grid width="400px">
               {/* 파일 */}
                 {/* <Grid width="70px" height="auto" padding="5% 0px 0px 0px" margin="0px 0px 0px 5%"> 
                     <Input type={'file'} id="input"></Input>
                 </Grid> */}
                 {/* video*/}
-                <Grid>
+                <Grid width="400px">
                   <Write_vid controls autoPlay loop muted>
                     <source src={Write_video} type="video/mp4" />
                   </Write_vid>
                 </Grid>
             </Grid>
             {/* flex 우측 - textarea */}
-            <Grid>
-              <Grid>
+            <Grid margin="0px 0px 0px 7%">
+              <Grid >
                 <Input
                   width="92%"
                   padding="2%"
+                  size="16px"
                   placeholder="제목을 입력해주세요."
                   _onChange={input_title}></Input>
               </Grid>
@@ -162,6 +166,7 @@ const Write = (props) => {
                 width="90%"
                 margin="6% 5% 0px 0px;"
                 padding="3%;"
+                size="16px"
                 _onChange={input_content}
                 placeholder="후기를 입력해주세요."/>  
               </Grid>
@@ -205,9 +210,9 @@ const BtnBack = styled.div`
 `;
 
 const Write_vid = styled.video`
-  width: 600px;
+  border-radius: 20px;
+  width: 400px;
   height: 400px;
-  margin: 3% 0px 0px 5%;
   object-fit: fill;
 `;
 
