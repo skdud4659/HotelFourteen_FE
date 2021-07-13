@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { getCookie } from "../../shared/cookie";
 
 const initialState = {
   list: [],
@@ -28,6 +29,7 @@ const room = createSlice({
 
 const instance = axios.create({
   baseURL: "http://3.35.173.0:3000",
+  headers: { authorization: `Bearer ${getCookie("token")}` },
 });
 
 export const actionGetRooms =

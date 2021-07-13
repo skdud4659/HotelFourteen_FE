@@ -12,17 +12,6 @@ import { format } from "date-fns";
 import { enGB } from "date-fns/locale";
 import { actionBookingforDb } from "../redux/modules/book";
 
-/**
- * 
- * adult: 2
-child: 2
-endDate: Sun Aug 08 2021 00:00:00 GMT+0900 (대한민국 표준시) {}
-roomType: "On-dol"
-room_id: "60e944b94e03c013b8c05816"
-startDate: Sun Jul 18 2021 00:00:00 GMT+0900 (대한민국 표준시) {}
- * 
- */
-
 const Book = (props) => {
   //현재 이메일
   const user_name = useSelector((state) => state.user.user_info.nickname);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Grid, Image, Text } from "../elements";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,8 @@ import { actionSetBookInfo } from "../redux/modules/book";
 const SearchRoom = (props) => {
   // 여기서 axios 서버 요청
   const { startDate, endDate, adult, child, roomType } = props;
+
+  const is_login = useSelector((state) => state.user.is_login);
 
   const room_info = useSelector((state) => state.room.room);
   const room_id = useSelector((state) => state.calendar.result.room_id);
@@ -22,6 +24,7 @@ const SearchRoom = (props) => {
     image: room_info.image,
   };
 
+  console.log(is_login);
   const update_room = {
     startDate,
     endDate,
@@ -34,8 +37,11 @@ const SearchRoom = (props) => {
   // 계산용
   // 리덕스에서 받아온 이미지
 
-  console.log(price);
   const handleReserve = () => {
+    if (!is_login) {
+      window.alert("로그인 하신 후에 이용해 주세요!");
+      return;
+    }
     dispatch(actionSetBookInfo(update_room));
     history.push("/book");
   };
