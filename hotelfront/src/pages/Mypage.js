@@ -12,7 +12,7 @@ const MyPage = (props) => {
         width="800px"
         height="100vh"
         margin="2% auto"
-        padding="5% 3%"
+        padding="3% 3%"
         border_radius={theme.borderRadius}>
           <Book_Detail/>
       </Grid>

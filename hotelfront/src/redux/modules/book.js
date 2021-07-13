@@ -107,7 +107,6 @@ export const actionUserBookInfo =
           book_id: each._id,
         };
       });
-      console.log(book_list);
       dispatch(actionSetUserBookInfo(user_book_info));
     } catch (error) {
       window.alert(error.message);
