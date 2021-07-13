@@ -77,7 +77,7 @@ export const actionBookingforDb =
       window.alert(error.message);
     }
   };
-
+/////
 const room_id = {
   "60e9448c4e03c013b8c05810": "Deluxe",
   "60e9449c4e03c013b8c05812": "Suite",
