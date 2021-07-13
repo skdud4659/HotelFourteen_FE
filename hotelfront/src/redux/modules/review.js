@@ -19,6 +19,7 @@ export const addReviewDB = (title, content) => {
     instance
       .post("/api/review", { title: title, content: content })
       .then((res) => {
+        console.log(res)
         window.alert('리뷰 작성을 완료하였어요!')
         dispatch(addReview(title, content))
         history.push('/')
@@ -111,6 +112,6 @@ const review = createSlice({
   },
 });
 
-export const { addReview, getReview, deleteReview, updateReview } = review.actions;
+export const { addReview, getReview, deleteReview, updateReview} = review.actions;
 
 export default review;

@@ -2,15 +2,15 @@ import React from "react";
 import { history } from "../redux/configStore";
 import { Button, Grid, Image, Text } from "../elements";
 import theme from "../shared/theme";
-import Permit from '../shared/Permit';
 
-import { useDispatch } from "react-redux";
-import { deleteReview, deleteReviewDB } from "../redux/modules/review";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteReview, deleteReviewDB} from "../redux/modules/review";
 
 import moment from "moment";
 
 const CardDetail = (props) => {
   const dispatch = useDispatch();
+  const user_name = useSelector((state) => state.user.user_info.nickname)
 
   //props
 
@@ -59,8 +59,8 @@ const CardDetail = (props) => {
             {content}
           </Text>
         </Grid>
-        <Permit>
-        <Grid width="200px" height="70px">
+        {user_name === nickname && (
+          <Grid width="200px" height="70px">
           <Grid is_flex>
             <Button
               key={_id}
@@ -87,7 +87,7 @@ const CardDetail = (props) => {
             </Button>
           </Grid>
         </Grid>
-        </Permit>
+        )}
       </Grid>
     </Grid>
   );

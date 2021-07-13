@@ -176,6 +176,7 @@ const Write = (props) => {
           {/* <Grid width="70px" height="auto" padding="5% 0px 0px 0px" margin="0px 0px 0px 5%"> 
                     <Input type={'file'} id="input"></Input>
                 </Grid> */}
+
           {/* video*/}
           <Grid width="400px">
             <Write_vid controls autoPlay loop muted>
