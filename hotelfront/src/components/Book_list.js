@@ -17,7 +17,7 @@ import Santa from '../img/santa.jpeg'
 const Book_list = (props) => {
   const dispatch = useDispatch();
   const chk_in = moment(props.startDate).format(`YYYY년 MM월 DD일 오후 3시`);
-  const chk_out = moment(props.startDate).format(`YYYY년 MM월 DD일 오전 12시`);
+  const chk_out = moment(props.endDate).format(`YYYY년 MM월 DD일 오전 12시`);
 
   //삭제 버튼
   const deleteBtn = () => {
