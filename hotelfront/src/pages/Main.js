@@ -26,7 +26,7 @@ const Main = (props) => {
         </Grid>
       </Grid>
       <UpDiv onClick={handleUp}>
-          <FontAwesomeIcon icon={faArrowCircleUp} size="5x" />
+          <FontAwesomeIcon icon={faArrowCircleUp} size="4x" />
       </UpDiv>
     </React.Fragment>
   );
@@ -35,9 +35,9 @@ const Main = (props) => {
 const UpDiv = styled.div`
   color: ${theme.bgColor};
   position: sticky;
-  width: 80px;
+  width: 64px;
   background-color: ${theme.fontColor};
-  height: 80px;
+  height: 64px;
   bottom: 50px;
   left: 2%;
   border-radius: 50%;
