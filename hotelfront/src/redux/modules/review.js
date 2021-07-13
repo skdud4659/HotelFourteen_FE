@@ -112,6 +112,6 @@ const review = createSlice({
   },
 });
 
-export const { addReview, getReview, deleteReview, updateReview } = review.actions;
+export const { addReview, getReview, deleteReview, updateReview} = review.actions;
 
 export default review;
