@@ -165,7 +165,6 @@ const InputBtn = styled.input`
   align-content: center;
 `;
 const HelperMsg = styled.div`
-  margin-top: 1rem;
   text-decoration: underline;
   font-size: 15px;
   font-weight: 600;

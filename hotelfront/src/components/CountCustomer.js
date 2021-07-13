@@ -51,6 +51,7 @@ const CountCustomer = () => {
         border_radius={theme.borderRadius}
       >
         <Button
+          bg_color={theme.innerBoxColor}
           width="70px"
           height="70px"
           border_radius="50%"
@@ -63,7 +64,7 @@ const CountCustomer = () => {
         </Button>
         <Grid
           border_radius={theme.borderRadius}
-          bg={theme.bgColor}
+          bg={theme.innerBoxColor}
           is_flex={true}
           width="120px"
         >
@@ -73,6 +74,7 @@ const CountCustomer = () => {
         </Grid>
 
         <Button
+          bg_color={theme.innerBoxColor}
           width="70px"
           height="70px"
           border_radius="50%"
@@ -94,6 +96,7 @@ const CountCustomer = () => {
         border_radius={theme.borderRadius}
       >
         <Button
+          bg_color={theme.innerBoxColor}
           width="70px"
           height="70px"
           border_radius="50%"
@@ -106,7 +109,7 @@ const CountCustomer = () => {
         </Button>
         <Grid
           border_radius={theme.borderRadius}
-          bg={theme.bgColor}
+          bg={theme.innerBoxColor}
           is_flex={true}
           width="120px"
         >
@@ -116,6 +119,7 @@ const CountCustomer = () => {
         </Grid>
 
         <Button
+          bg_color={theme.innerBoxColor}
           width="70px"
           height="70px"
           border_radius="50%"

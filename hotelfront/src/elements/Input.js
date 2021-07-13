@@ -22,6 +22,7 @@ const Input = (props) => {
     multiline,
     border_radius,
     color,
+    multiline_noValue,
   } = props;
 
   const styles = {
@@ -52,6 +53,21 @@ const Input = (props) => {
   }
 
   if (multiline) {
+    return (
+      <React.Fragment>
+        <TextArea
+          rows={17}
+          {...styles}
+          placeholder={placeholder}
+          type={type}
+          onChange={_onChange}
+          value={value}
+        />
+      </React.Fragment>
+    );
+  }
+
+  if (multiline_noValue) {
     return (
       <React.Fragment>
         <TextArea
@@ -98,6 +114,7 @@ Input.defaultProps = {
   bg: null,
   border_radius: "",
   color: "",
+  multiline_noValue:"",
 };
 
 const InputBox = styled.input`
