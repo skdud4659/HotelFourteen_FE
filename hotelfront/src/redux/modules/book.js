@@ -15,8 +15,17 @@ const initialState = {
     roomType: "",
     room_id: "",
   },
+  user_book_info: [],
   is_ready: false,
 };
+
+/*        adult: each.adult,
+          endDate: each.endDate,
+          kid: each.kid,
+          price: each.price,
+          roomType: room_id[each.roomId],
+          startDate: each.startDate,
+          book_id: each.userId._id, */
 
 const book = createSlice({
   name: "book",
@@ -25,6 +34,9 @@ const book = createSlice({
     actionSetBookInfo: (state, action) => {
       state.book_info = { ...action.payload };
       state.is_ready = true;
+    },
+    actionSetUserBookInfo: (state, action) => {
+      state.user_book_info = action.payload;
     },
   },
 });
@@ -60,6 +72,41 @@ export const actionBookingforDb =
     }
   };
 
-export const { actionSetBookInfo } = book.actions;
+const room_id = {
+  "60e9448c4e03c013b8c05810": "Deluxe",
+  "60e9449c4e03c013b8c05812": "Suite",
+  "60e944a84e03c013b8c05814": "Superior",
+  "60e944b94e03c013b8c05816": "On-dol",
+  "60e944c54e03c013b8c05818": "Single",
+};
+
+export const actionUserBookInfo =
+  () =>
+  async (dispatch, getState, { history }) => {
+    const nickname = getState().user.user_info.nickname;
+
+    try {
+      const book_list = await instance.get("/api/book");
+      const user_book_list = book_list.data.books.filter((each) => {
+        return each.userId.nickname === nickname;
+      });
+      const user_book_info = user_book_list.map((each) => {
+        return {
+          adult: each.adult,
+          endDate: new Date(each.endDate),
+          kid: each.kid,
+          price: each.price,
+          roomType: room_id[each.roomId],
+          startDate: new Date(each.startDate),
+          book_id: each.userId._id,
+        };
+      });
+      dispatch(actionSetUserBookInfo(user_book_info));
+    } catch (error) {
+      window.alert(error.message);
+    }
+  };
+
+export const { actionSetBookInfo, actionSetUserBookInfo } = book.actions;
 
 export default book;

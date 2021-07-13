@@ -5,7 +5,7 @@ import LogIn from "../pages/LogIn";
 import Main from "../pages/Main";
 import SignUp from "../pages/SignUp";
 import WriteEdit from "../pages/WriteEdit";
-import MyPage from '../pages/Mypage'
+import MyPage from "../pages/Mypage";
 
 //라우팅
 import { Redirect, Route } from "react-router-dom";
@@ -35,16 +35,16 @@ function App() {
       <Wrapper>
         <Header />
       </Wrapper>
-          <ConnectedRouter history={history}>
-            <Route path="/" exact component={Main} />
-            <Route path="/login" exact component={LogIn} />
-            <Route path="/register" exact component={SignUp} />
-            <Route path="/review" exact component={WriteEdit} />
-            <Route path="/review/:_id" exact component={WriteEdit} />
-            {is_ready && <Route path="/book" exact component={Book} />}
-            <Route path="/mypage" exact component={MyPage} />
-            <Redirect from="*" to="/" />
-          </ConnectedRouter>
+      <ConnectedRouter history={history}>
+        <Route path="/" exact component={Main} />
+        <Route path="/login" exact component={LogIn} />
+        <Route path="/register" exact component={SignUp} />
+        <Route path="/review" exact component={WriteEdit} />
+        <Route path="/review/:_id" exact component={WriteEdit} />
+        {is_ready && <Route path="/book" exact component={Book} />}
+        <Route path="/mypage" exact component={MyPage} />
+        <Redirect from="*" to="/" />
+      </ConnectedRouter>
     </>
   );
 }
