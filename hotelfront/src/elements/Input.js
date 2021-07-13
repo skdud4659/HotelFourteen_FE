@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Text } from "../elements";
 
 const Input = (props) => {
-
   const {
     width,
     padding,
@@ -24,7 +23,6 @@ const Input = (props) => {
     border_radius,
     color,
   } = props;
-
 
   const styles = {
     padding: padding,
@@ -66,19 +64,6 @@ const Input = (props) => {
       </React.Fragment>
     );
   }
-  if (multiline_value) {
-    return (
-      <React.Fragment>
-        <TextArea
-          rows={17}
-          {...styles}
-          placeholder={placeholder}
-          type={type}
-          onChange={_onChange}
-        />
-      </React.Fragment>
-    );
-  }
 
   return (
     <React.Fragment>
@@ -98,20 +83,18 @@ const Input = (props) => {
 Input.defaultProps = {
   width: "100%",
   padding: false,
-
-  height : "100%",
-  border : false,
-  size : "14px",
-  margin : false,
-  label : "",
-  value : "",
-  placeholder : "",
-  _onChange : () => {},
-  type : "text",
-  need_value : false,
-  multiline :false,
-  multiline_value :false,
-  name : "",
+  height: "100%",
+  border: false,
+  size: "14px",
+  margin: false,
+  label: "",
+  value: "",
+  placeholder: "",
+  _onChange: () => {},
+  type: "text",
+  need_value: false,
+  multiline: false,
+  name: "",
   bg: null,
   border_radius: "",
   color: "",
