@@ -19,6 +19,10 @@ const Header = (props) => {
     history.push("/register");
   };
 
+  const GoMyPage = () => {
+    history.push("/mypage");
+  };
+
 
   const handleLogout = () => {
     dispatch(actionLogOut());
@@ -66,6 +70,18 @@ const Header = (props) => {
       )}
       {is_login && (
         <ButtonDiv>
+          <Button
+            width="130px"
+            height="35px"
+            border_radius={theme.borderRadius}
+            hover_color={theme.hoverColor}
+            margin="0 15px"
+            _onClick={GoMyPage}
+          >
+            <Text color="ivory" size="17px">
+              마이페이지
+            </Text>
+          </Button>
           <Button
             width="200px"
             height="35px"

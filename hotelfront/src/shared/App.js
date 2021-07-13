@@ -5,6 +5,7 @@ import LogIn from "../pages/LogIn";
 import Main from "../pages/Main";
 import SignUp from "../pages/SignUp";
 import WriteEdit from "../pages/WriteEdit";
+import MyPage from '../pages/Mypage'
 
 //라우팅
 import { Redirect, Route } from "react-router-dom";
@@ -33,6 +34,7 @@ function App() {
             <Route path="/review" exact component={WriteEdit} />
             <Route path="/review/:_id" exact component={WriteEdit} />
             <Route path="/book" exact component={Book} />
+            <Route path="/mypage" exact component={MyPage} />
             <Redirect from="*" to="/" />
           </ConnectedRouter>
     </>
