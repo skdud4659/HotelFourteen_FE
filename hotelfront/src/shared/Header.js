@@ -83,7 +83,7 @@ const Header = (props) => {
             </Text>
           </Button>
           <Button
-            width="200px"
+            width="130px"
             height="35px"
             border_radius={theme.borderRadius}
             hover_color={theme.hoverColor}

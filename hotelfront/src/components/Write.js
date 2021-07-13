@@ -162,7 +162,7 @@ const Write = (props) => {
               </Grid>
               <Grid>
               <Input
-                multiline
+                multiline_value
                 width="90%"
                 margin="6% 5% 0px 0px;"
                 padding="3%;"
