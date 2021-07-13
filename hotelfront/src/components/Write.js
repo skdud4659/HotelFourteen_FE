@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addReviewDB, updateReviewDB } from '../redux/modules/review';
 
 import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
+import {faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {history} from '../redux/configStore';
@@ -52,6 +53,11 @@ const Write = (props) => {
  //수정 버튼
   const EditBtn = () => {
     dispatch(updateReviewDB(title, content, review_id))
+  }
+
+  //뒤로가기 버튼
+  const GoBack = () => {
+    history.goBack()
   }
 
   //수정일 때
@@ -109,6 +115,17 @@ const Write = (props) => {
                 <FontAwesomeIcon icon={faCheckCircle} size="5x" color="rgba(52, 118, 88, 1)"/>
             </Button>
           </Btn>
+          {/* 뒤로가기 버튼 */}
+          <BtnBack>
+            <Button
+              width="80px"
+              height="80px"
+              border_radius="50%"
+              bg_color="rgba(0,0,0,0.0)" 
+              _onClick={GoBack}>
+                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="5x" color="rgba(52, 118, 88, 1)"/>
+            </Button>
+          </BtnBack>
     </React.Fragment>
     )
   }
@@ -128,7 +145,7 @@ const Write = (props) => {
                 <Grid>
                   <Image
                     src="https://cdn.pixabay.com/photo/2017/03/18/14/06/milky-way-2154049_1280.jpg"
-                    width=" 600px"
+                    width="90%"
                     height="400px"
                     margin="3% 0px 0px 5%"/> 
                 </Grid>
@@ -164,6 +181,17 @@ const Write = (props) => {
                 <FontAwesomeIcon icon={faCheckCircle} size="5x" color="rgba(52, 118, 88, 1)"/>
             </Button>
           </Btn>
+          {/* 뒤로가기 버튼 */}
+          <BtnBack>
+            <Button
+              width="80px"
+              height="80px"
+              border_radius="50%"
+              bg_color="rgba(0,0,0,0.0)" 
+              _onClick={GoBack}>
+                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="5x" color="rgba(52, 118, 88, 1)"/>
+            </Button>
+          </BtnBack>
     </React.Fragment>
   );
 }
@@ -173,6 +201,12 @@ const Btn = styled.div`
   float: right;
   margin-right: 1%;
 `;
+
+const BtnBack = styled.div`
+  float: left;
+  margin-left: 1%;
+`;
+
 
 export default Write;
 

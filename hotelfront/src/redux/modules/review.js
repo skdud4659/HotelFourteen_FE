@@ -4,10 +4,12 @@
 // //import
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import {getCookie} from '../../shared/cookie'
 
 // //axios
 const instance = axios.create({
   baseURL: "http://3.35.173.0:3000",
+  headers: { authorization: `Bearer ${getCookie("token")}` },
 });
 
 export const addReviewDB = (title, content) => {
@@ -87,7 +89,6 @@ const review = createSlice({
       const title = action.payload.title;
       const content = action.payload.content;
       state.list.push({ title, content });
-      // state.list.push(action.payload.contents)
     },
 
     getReview: (state, action) => {

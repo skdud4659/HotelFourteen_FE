@@ -65,7 +65,7 @@ const Calendar = () => {
   return (
     <>
       <Grid
-        is_flex={true}
+        is_flex
         margin="0 auto 10px auto"
         width="800px"
         height="70px"
@@ -75,75 +75,78 @@ const Calendar = () => {
         <Grid
           _onClick={calendarToggle}
           border_radius={theme.borderRadius}
-          bg={theme.bgColor}
-          is_flex={true}
+          bg={theme.innerBoxColor}
+          is_flex
           width="450px"
         >
           <Text
             margin="0 0 0 30px"
             color={theme.fontColor}
-            bold={true}
-            size="15px"
+            bold
+            size="16px"
           >
             Reservation :
           </Text>
           <Grid
-            is_flex={true}
-            bg={theme.innerBoxColor}
+            is_flex
+            bg={theme.bgColor}
             height="50px"
             width="130px"
             border_radius={theme.borderRadius}
           >
-            <Text color={theme.fontColor} bold={true} size="15px">
+            <Text color={theme.fontColor} bold size="15px">
               {startDate
                 ? format(startDate, "yyyy-MM-dd", { locale: enGB })
                 : ""}
             </Text>
           </Grid>
           <Grid
-            is_flex={true}
-            bg={theme.innerBoxColor}
+            is_flex
+            bg={theme.bgColor}
             height="50px"
             width="130px"
             border_radius={theme.borderRadius}
           >
-            <Text color={theme.fontColor} bold={true} size="15px">
+            <Text color={theme.fontColor} bold size="15px">
               {endDate ? format(endDate, " yyyy-MM-dd", { locale: enGB }) : ""}
             </Text>
           </Grid>
         </Grid>
 
         <Button
+          bg_color={theme.innerBoxColor}
           width="120px"
           border_radius={theme.borderRadius}
           hover_color={theme.hoverColor}
           _onClick={calendarToggle}
           margin="0 0 0 10px"
         >
-          <Text size="15px" bold={true} color="white">
+          <Text size="17px" bold color="white">
             날짜선택
           </Text>
         </Button>
 
         <Button
+          bg_color={theme.innerBoxColor}
           width="120px"
           border_radius={theme.borderRadius}
           hover_color={theme.hoverColor}
           _onClick={personToggle}
           margin="0 10px"
         >
-          <Text color="white" bold={true} size="15px">
+          <Text color="white" bold size="17px">
             상세선택
           </Text>
         </Button>
 
         <Button
+          bg_color={theme.innerBoxColor}
           width="120px"
           border_radius={theme.borderRadius}
           hover_color={theme.hoverColor}
           _onClick={searchToogle}
         >
-          <Text size="15px" bold={true} color="white">
+          <Text size="17px" bold color="white">
             조회하기
           </Text>
         </Button>
