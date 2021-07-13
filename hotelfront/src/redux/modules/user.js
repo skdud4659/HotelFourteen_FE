@@ -15,19 +15,24 @@ const user = createSlice({
   initialState,
   reducers: {
     actionSetUser: (state, action) => {
-      state.user_info.nickname = action.payload;
-      setCookie("nickname", action.payload);
+      state.user_info.nickname = action.payload.nickname;
+      setCookie("token", action.payload.token);
       state.is_login = true;
     },
     actionLogOut: (state, action) => {
-      deleteCookie("nickname");
+      deleteCookie("token");
       state.is_login = false;
+    },
+    actionSetNick: (state, action) => {
+      state.user_info.nickname = action.payload;
+      state.is_login = true;
     },
   },
 });
 
 const instance = axios.create({
   baseURL: "http://3.35.173.0:3000",
+  headers: { authorization: `Bearer ${getCookie("token")}` },
 });
 
 export const actionSignupForDb =
@@ -50,8 +55,7 @@ export const actionSignupForDb =
         return;
       }
 
-      dispatch(actionSetUser(email));
-      history.replace("/");
+      history.replace("/login");
     } catch (data) {
       window.alert(data.message);
     }
@@ -75,8 +79,12 @@ export const actionLoginForDb =
         return;
       }
       // 체크해서 가져올것
-
-      dispatch(actionSetUser(email));
+      const login_info = {
+        token: login.data.token,
+        nickname: login.data.nickname,
+      };
+      console.log(login_info);
+      dispatch(actionSetUser(login_info));
       history.replace("/");
     } catch (error) {
       window.alert(error.message);
@@ -86,14 +94,22 @@ export const actionLoginForDb =
 export const actionLoginChecker =
   () =>
   async (dispatch, getState, { history }) => {
-    const get_nick = getCookie("nickname");
-    console.log(get_nick);
-    if (get_nick === undefined) {
+    const token = getCookie("token");
+    if (token === undefined) {
       return;
     }
-    dispatch(actionSetUser(get_nick));
+    try {
+      const confirm = await instance.get("/api/user/me");
+      if (confirm.data.message !== "success") {
+        window.alert(confirm.data.message);
+        return;
+      }
+      actionSetNick(confirm.data.nickname);
+    } catch (error) {
+      window.alert(error.message);
+    }
   };
 
-export const { actionSetUser, actionLogOut } = user.actions;
+export const { actionSetUser, actionLogOut, actionSetNick } = user.actions;
 
 export default user;
