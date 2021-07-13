@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addReviewDB, updateReviewDB } from '../redux/modules/review';
 
 import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
+import {faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Write_video from '../video/pexels-nicolas-becker-5600929.mp4'
 
 import {history} from '../redux/configStore';
 
@@ -54,6 +56,11 @@ const Write = (props) => {
     dispatch(updateReviewDB(title, content, review_id))
   }
 
+  //뒤로가기 버튼
+  const GoBack = () => {
+    history.goBack()
+  }
+
   //수정일 때
   if(is_edit) {
     return (
@@ -66,13 +73,11 @@ const Write = (props) => {
                 {/* <Grid width="70px" height="auto" padding="5% 0px 0px 0px" margin="0px 0px 0px 5%"> 
                     <Input type={'file'} id="input"></Input>
                 </Grid> */}
-                {/* 미리보기 이미지 */}
+                {/* video*/}
                 <Grid>
-                  <Image
-                    src="https://cdn.pixabay.com/photo/2017/03/18/14/06/milky-way-2154049_1280.jpg"
-                    width=" 600px"
-                    height="400px"
-                    margin="3% 0px 0px 5%"/> 
+                  <Write_vid controls autoPlay loop muted>
+                    <source src={Write_video} type="video/mp4" />
+                  </Write_vid>
                 </Grid>
             </Grid>
             {/* flex 우측 - textarea */}
@@ -109,6 +114,17 @@ const Write = (props) => {
                 <FontAwesomeIcon icon={faCheckCircle} size="5x" color="rgba(52, 118, 88, 1)"/>
             </Button>
           </Btn>
+          {/* 뒤로가기 버튼 */}
+          <BtnBack>
+            <Button
+              width="80px"
+              height="80px"
+              border_radius="50%"
+              bg_color="rgba(0,0,0,0.0)" 
+              _onClick={GoBack}>
+                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="5x" color="rgba(52, 118, 88, 1)"/>
+            </Button>
+          </BtnBack>
     </React.Fragment>
     )
   }
@@ -124,13 +140,11 @@ const Write = (props) => {
                 {/* <Grid width="70px" height="auto" padding="5% 0px 0px 0px" margin="0px 0px 0px 5%"> 
                     <Input type={'file'} id="input"></Input>
                 </Grid> */}
-                {/* 미리보기 이미지 */}
+                {/* video*/}
                 <Grid>
-                  <Image
-                    src="https://cdn.pixabay.com/photo/2017/03/18/14/06/milky-way-2154049_1280.jpg"
-                    width=" 600px"
-                    height="400px"
-                    margin="3% 0px 0px 5%"/> 
+                  <Write_vid controls autoPlay loop muted>
+                    <source src={Write_video} type="video/mp4" />
+                  </Write_vid>
                 </Grid>
             </Grid>
             {/* flex 우측 - textarea */}
@@ -164,6 +178,17 @@ const Write = (props) => {
                 <FontAwesomeIcon icon={faCheckCircle} size="5x" color="rgba(52, 118, 88, 1)"/>
             </Button>
           </Btn>
+          {/* 뒤로가기 버튼 */}
+          <BtnBack>
+            <Button
+              width="80px"
+              height="80px"
+              border_radius="50%"
+              bg_color="rgba(0,0,0,0.0)" 
+              _onClick={GoBack}>
+                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="5x" color="rgba(52, 118, 88, 1)"/>
+            </Button>
+          </BtnBack>
     </React.Fragment>
   );
 }
@@ -173,6 +198,19 @@ const Btn = styled.div`
   float: right;
   margin-right: 1%;
 `;
+
+const BtnBack = styled.div`
+  float: left;
+  margin-left: 1%;
+`;
+
+const Write_vid = styled.video`
+  width: 600px;
+  height: 400px;
+  margin: 3% 0px 0px 5%;
+  object-fit: fill;
+`;
+
 
 export default Write;
 
