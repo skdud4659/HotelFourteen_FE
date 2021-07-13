@@ -8,6 +8,7 @@ import { addReviewDB, updateReviewDB } from '../redux/modules/review';
 import {faCheckCircle} from "@fortawesome/free-solid-svg-icons";
 import {faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Write_video from '../video/pexels-nicolas-becker-5600929.mp4'
 
 import {history} from '../redux/configStore';
 
@@ -72,13 +73,11 @@ const Write = (props) => {
                 {/* <Grid width="70px" height="auto" padding="5% 0px 0px 0px" margin="0px 0px 0px 5%"> 
                     <Input type={'file'} id="input"></Input>
                 </Grid> */}
-                {/* 미리보기 이미지 */}
+                {/* video*/}
                 <Grid>
-                  <Image
-                    src="https://cdn.pixabay.com/photo/2017/03/18/14/06/milky-way-2154049_1280.jpg"
-                    width=" 600px"
-                    height="400px"
-                    margin="3% 0px 0px 5%"/> 
+                  <Write_vid controls autoPlay loop muted>
+                    <source src={Write_video} type="video/mp4" />
+                  </Write_vid>
                 </Grid>
             </Grid>
             {/* flex 우측 - textarea */}
@@ -141,13 +140,11 @@ const Write = (props) => {
                 {/* <Grid width="70px" height="auto" padding="5% 0px 0px 0px" margin="0px 0px 0px 5%"> 
                     <Input type={'file'} id="input"></Input>
                 </Grid> */}
-                {/* 미리보기 이미지 */}
+                {/* video*/}
                 <Grid>
-                  <Image
-                    src="https://cdn.pixabay.com/photo/2017/03/18/14/06/milky-way-2154049_1280.jpg"
-                    width="90%"
-                    height="400px"
-                    margin="3% 0px 0px 5%"/> 
+                  <Write_vid controls autoPlay loop muted>
+                    <source src={Write_video} type="video/mp4" />
+                  </Write_vid>
                 </Grid>
             </Grid>
             {/* flex 우측 - textarea */}
@@ -205,6 +202,13 @@ const Btn = styled.div`
 const BtnBack = styled.div`
   float: left;
   margin-left: 1%;
+`;
+
+const Write_vid = styled.video`
+  width: 600px;
+  height: 400px;
+  margin: 3% 0px 0px 5%;
+  object-fit: fill;
 `;
 
 
