@@ -2,6 +2,7 @@ import React from "react";
 import { history } from "../redux/configStore";
 import { Button, Grid, Image, Text } from "../elements";
 import theme from "../shared/theme";
+import Permit from '../shared/Permit';
 
 import { useDispatch } from "react-redux";
 import { deleteReview, deleteReviewDB } from "../redux/modules/review";
@@ -12,7 +13,9 @@ const CardDetail = (props) => {
   const dispatch = useDispatch();
 
   //props
-  const { title, _id, content, date, userId, user_profile, image_url } = props;
+
+  const {title, _id, content, date, userId, nickname, user_profile, image_url} = props
+
 
   const insert_d = moment(date).format("dddd MMM Do YY");
 
@@ -56,7 +59,7 @@ const CardDetail = (props) => {
             {content}
           </Text>
         </Grid>
-
+        <Permit>
         <Grid width="200px" height="70px">
           <Grid is_flex>
             <Button
@@ -84,6 +87,7 @@ const CardDetail = (props) => {
             </Button>
           </Grid>
         </Grid>
+        </Permit>
       </Grid>
     </Grid>
   );
@@ -103,8 +107,10 @@ CardDetail.defaultProps = {
   date: "Mon Jul 12 2021",
   userId: {
     _id: "60ec30cbff7f286051745a60",
-    nickname: "garden1",
+
   },
-};
+  nickname: "garden1"
+}
+
 
 export default CardDetail;
