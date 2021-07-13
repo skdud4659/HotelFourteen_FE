@@ -44,6 +44,7 @@ function App() {
             {is_ready && <Route path="/book" exact component={Book} />}
             <Route path="/mypage" exact component={MyPage} />
             <Redirect from="*" to="/" />
+          </ConnectedRouter>
     </>
   );
 }
