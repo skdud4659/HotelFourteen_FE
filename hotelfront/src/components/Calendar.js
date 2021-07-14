@@ -47,7 +47,7 @@ const Calendar = () => {
       window.alert("선택사항을 모두 선택해 주세요");
       return;
     }
-    if (startDate.getDate() < new Date().getDate()) {
+    if (startDate < new Date()) {
       window.alert("오늘 날짜 이상을 설정해 주세요");
       return;
     }
@@ -82,12 +82,7 @@ const Calendar = () => {
           is_flex
           width="450px"
         >
-          <Text
-            margin="0 0 0 30px"
-            color={theme.fontColor}
-            bold
-            size="16px"
-          >
+          <Text margin="0 0 0 30px" color={theme.fontColor} bold size="16px">
             Reservation :
           </Text>
           <Grid
