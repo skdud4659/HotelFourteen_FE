@@ -22,7 +22,7 @@ const user = createSlice({
     actionLogOut: (state, action) => {
       deleteCookie("token");
       state.is_login = false;
-      window.alert('로그아웃이 완료되었습니다.')
+      window.alert("로그아웃이 완료되었습니다.");
     },
     actionSetNick: (state, action) => {
       state.user_info.nickname = action.payload;
@@ -96,7 +96,7 @@ export const actionLoginChecker =
   () =>
   async (dispatch, getState, { history }) => {
     const token = getCookie("token");
-    if (token === undefined) {
+    if (token === null) {
       return;
     }
     try {

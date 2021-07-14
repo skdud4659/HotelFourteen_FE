@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionGetRooms } from "../redux/modules/room";
 
 import { actionLoginChecker } from "../redux/modules/user";
+import MetaScript from "./MetaScript";
 
 function App() {
   const is_login = useSelector((state) => state.user.is_login);
@@ -32,6 +33,7 @@ function App() {
   }, []);
   return (
     <>
+      <MetaScript />
       <Wrapper>
         <Header />
       </Wrapper>
